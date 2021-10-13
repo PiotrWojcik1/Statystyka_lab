@@ -1,0 +1,65 @@
+---
+title: "Raport 1"
+author: "Piotr Wójcik"
+date: "10 10 2021"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(scipen=999)
+```
+<font size="3">
+<p>W poniższym dokumencie będę prezentował zadania z pierwszej listy z przedmiotu <em>Statystyka</em> wykładanego na <span style="white-space: nowrap; font-style: italic;">Uniwersytecie Wrocławskim</span> w roku akademickim 2021/2022 w semestrze zimowym.</p>
+
+<h2>Zadanie 1</h2>
+<p>W poniższym zadaniu wygenerujemy $\small n = 50$ obserwacji z rozkładu:</p>
+<ul>
+<li>$\small N(1,1)$,</li>
+<li>$\small N(4,1)$,</li>
+<li>$\small N(1,4)$.</li>
+</ul>
+```{r normalDist1, echo = TRUE, warning = FALSE, tidy = TRUE}
+normData1 <- rnorm(50, 1, 1)
+normData2 <- rnorm(50, 4, 1)
+normData3 <- rnorm(50, 1, 2)
+```
+Teraz, dla każdej z tych obserwacji, obliczymy wartość estymatora parametru $\small \theta$ postaci:
+$$
+ \hat{\theta_1} = \bar{X} = \frac{X_1 + X_2 + \ldots + X_n}{n}, \\
+ \hat{\theta_2} = Me\{X_1, \ldots , X_n \}, \\
+ \hat{\theta_3} = \sum_{i=1}^{n}{w_iX_i}, \hspace{10px} \text{gdzie} \hspace{5px} w_i = \frac{2k + n - 1}{2n^2}, \\
+ \hat{\theta_4} = \sum_{i=1}^{n}{w_iX_{i:n}}, \hspace{10px} \text{gdzie} \hspace{5px} X_{1:n} \leq \ldots \leq X_{n:n} \hspace{8px} \text{są uporządkowanymi obserwacjami} \hspace{5px} X_1, \ldots , X_n ; \\ w_i = \varphi\left( \Phi^{-1}(\frac{i-1}{n})\right) -  \varphi\left( \Phi^{-1}(\frac{i}{n})\right), \text{gdzie $\varphi$ jest gęstością, a $\Phi$ dystrybuantą standardowego rozkładu normalnego}. 
+$$
+
+```{r estFun1, echo = TRUE, warning = FALSE, tidy = TRUE}
+estNorm1 <- function(normData) {
+  return(sum(normData)/50)
+}
+estNorm2 <- function(normData) {
+  return(median(normData))
+}
+seqNorm1 <- sapply(1:50, FUN = function(k){(2*k+50-1)/(2*50^2)})
+estNorm3 <- function(normData) {
+  return(sum(seqNorm1 * normData))
+}
+seqNorm2 <- sapply(1:50, FUN = function(i){dnorm(qnorm((i-1)/50)) - dnorm(qnorm(i/50))})
+estNorm4 <- function(normData) return(sum(seqNorm2 * sort(normData)))
+
+estNorm1(normData1)
+estNorm2(normData1)
+estNorm3(normData1)
+estNorm4(normData1)
+
+estNorm1(normData2)
+estNorm2(normData2)
+estNorm3(normData2)
+estNorm4(normData2)
+
+estNorm1(normData3)
+estNorm2(normData3)
+estNorm3(normData3)
+estNorm4(normData3)
+
+```

@@ -1,0 +1,5 @@
+"0","knitr::kable(table, row.names = TRUE, escape = FALSE, format = ""pipe"", align = ""c"", col.names = c(""$\\hat{\\theta_1}$"", ""$\\hat{\\theta_2}$"", ""$\\hat{\\theta_3}$"", ""$\\hat{\\theta_4}$""))
+"
+"2","Błąd w poleceniu 'dimnames(x) <- dn':
+  długość 'dimnames' [2] nie jest równa stopniowi tablicy
+"

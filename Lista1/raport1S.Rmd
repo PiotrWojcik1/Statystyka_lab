@@ -1,0 +1,133 @@
+---
+title: "Raport 1"
+author: "Piotr Wójcik"
+date: "10/10/2021"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(scipen=999)
+```
+<font size="3">
+<p>W poniższym dokumencie będę prezentował zadania z pierwszej listy z przedmiotu <em>Statystyka</em> wykładanego na <span style="white-space: nowrap; font-style: italic;">Uniwersytecie Wrocławskim</span> w roku akademickim 2021/2022 w semestrze zimowym.</p>
+
+<h2>Zadanie 1</h2>
+<p>W poniższym zadaniu wygenerujemy $\small n = 50$ obserwacji z rozkładu:</p>
+<ul>
+<li>$\small N(1,1)$,</li>
+<li>$\small N(4,1)$,</li>
+<li>$\small N(1,4)$.</li>
+</ul>
+```{r normalDist1, echo = FALSE, warning = FALSE, tidy = TRUE}
+normData1 <- rnorm(50, 1, 1)
+normData2 <- rnorm(50, 4, 1)
+normData3 <- rnorm(50, 1, 2)
+```
+<p>Teraz, dla każdej z tych obserwacji, obliczymy wartość estymatora parametru $\small \theta$ postaci:</p>
+$$ 
+\small \hat{\theta_1} = \bar{X} = \frac{X_1 + X_2 + \ldots + X_n}{n}, \\
+\small \hat{\theta_2} = Me\{X_1, \ldots , X_n \}, \\
+\small \hat{\theta_3} = \sum_{i=1}^{n}{w_iX_i}, \hspace{10px} \text{gdzie} \hspace{5px} w_i = \frac{2k + n - 1}{2n^2}, \\
+\small \hat{\theta_4} = \sum_{i=1}^{n}{w_iX_{i:n}}, 
+$$
+gdzie $\small X_{1:n} \leq \ldots \leq X_{n:n}$ są uporządkowanymi obserwacjami $\small X_1, \ldots , X_n ; \ \ w_i = \varphi\left( \Phi^{-1}(\frac{i-1}{n})\right) -  \varphi\left( \Phi^{-1}(\frac{i}{n})\right)$, gdzie $\small \varphi$ jest gęstością, a $\small \Phi$ dystrybuantą standardowego rozkładu normalnego. 
+ 
+<p>Dane przedstawimy w poniższej tabeli:</p>
+
+```{r estFun1, echo = FALSE, warning = FALSE, tidy = TRUE}
+estNorm1 <- function(normData) {
+  return(sum(normData)/50)
+}
+estNorm2 <- function(normData) {
+  return(median(normData))
+}
+seqNorm1 <- sapply(1:50, FUN = function(k){(2*k+50-1)/(2*50^2)})
+estNorm3 <- function(normData) {
+  return(sum(seqNorm1 * normData))
+}
+seqNorm2 <- sapply(1:50, FUN = function(i){dnorm(qnorm((i-1)/50)) - dnorm(qnorm(i/50))})
+estNorm4 <- function(normData) {
+  return(sum(seqNorm2 * sort(normData)))
+} 
+
+rows = c("$\\hat{\\theta_1}$", "$\\hat{\\theta_2}$", "$\\hat{\\theta_3}$", "$\\hat{\\theta_4}$")
+column1 <- c(estNorm1(normData1), estNorm2(normData1), estNorm3(normData1), estNorm4(normData1))
+column2 <- c(estNorm1(normData2), estNorm2(normData2), estNorm3(normData2), estNorm4(normData2))
+column3 <- c(estNorm1(normData3), estNorm2(normData3), estNorm3(normData3), estNorm4(normData3))
+table <- data.frame(column1, column2, column3)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$N(1,1)$", "$N(4,1)$", "$N(1,4)$"))
+```
+<p>Z uzyskanych liczb, nie jesteśmy w stanie wyciągnąć, zbyt wiele użytecznych wniosków. Najbardziej rzucające się w oczy, jest estymowanie parametru $\small \theta$, estymatorem $\small \hat{\theta_4}$, którego wartości, są najbardziej rozbieżne od prawdziwej wartości $\small \theta$. Jest to spowodowane tym, że ciąg wag jaki dobraliśmy, nadaje największe znaczenie wyrazom, które są najbardziej ekstremalne. Warto też zwrócić uwagę na ostatnią kolumnę, z próbą z rozkładu $\small N(1,4)$. Ma ona największą wariancję, przez co w ogólności, wszystkie estymatory osiągały gorsze przybliżenia, w porównaniu z pozostałymi rozkładami.</p>
+<p>Aby lepiej przyjrzeć się powyższym parametrom, wykonamy całe doświadczenie jeszcze $\small 10000$ razy, aby następnie, wykorzystując <em>Prawo Wielkich Liczb</em> oszacować:</p>
+<ul>
+<li>$\small Var(T)$,</li>
+<li>$\small E[(T - \theta)^2]$,</li>
+<li>$\small E[T - \theta]$.</li>
+</ul>
+<p>Gdzie $\small T$ jest statystyką, która estymuje parametr $\small \theta$.</p>
+
+```{r testingEst1, echo = FALSE, warning = FALSE, tidy = TRUE}
+Estimators1Data1 <- sapply(1:10000, function(i){estNorm1(rnorm(50, 1, 1))})
+Estimators1Data2 <- sapply(1:10000, function(i){estNorm1(rnorm(50, 4, 1))})
+Estimators1Data3 <- sapply(1:10000, function(i){estNorm1(rnorm(50, 1, 2))})
+
+Estimators2Data1 <- sapply(1:10000, function(i){estNorm2(rnorm(50, 1, 1))})
+Estimators2Data2 <- sapply(1:10000, function(i){estNorm2(rnorm(50, 4, 1))})
+Estimators2Data3 <- sapply(1:10000, function(i){estNorm2(rnorm(50, 1, 2))})
+
+Estimators3Data1 <- sapply(1:10000, function(i){estNorm3(rnorm(50, 1, 1))})
+Estimators3Data2 <- sapply(1:10000, function(i){estNorm3(rnorm(50, 4, 1))})
+Estimators3Data3 <- sapply(1:10000, function(i){estNorm3(rnorm(50, 1, 2))})
+
+Estimators4Data1 <- sapply(1:10000, function(i){estNorm4(rnorm(50, 1, 1))})
+Estimators4Data2 <- sapply(1:10000, function(i){estNorm4(rnorm(50, 4, 1))})
+Estimators4Data3 <- sapply(1:10000, function(i){estNorm4(rnorm(50, 1, 2))})
+
+varEstimator <- function(data, theta) {
+  return(1/10000*sum((data - theta)^2))
+}
+
+BiasEst <- function(data, theta) {
+  return(1/10000*sum(data - theta))
+}
+
+```
+<h4>Testy dla $\small N(1,1)$:</h4>
+```{r testingEST1Tab1, echo = FALSE, warning = FALSE, tidy = TRUE}
+rows <- c("Wariancja", "MSE", "Obciążenie")
+column1 <- c(varEstimator(Estimators1Data1, 1), varEstimator(Estimators1Data1, 1), BiasEst(Estimators1Data1, 1))
+column2 <- c(varEstimator(Estimators2Data1, 1), varEstimator(Estimators2Data1, 1), BiasEst(Estimators2Data1, 1))
+column3 <- c(varEstimator(Estimators3Data1, 1), varEstimator(Estimators3Data1, 1), BiasEst(Estimators3Data1, 1))
+column4 <- c(1/10000*sum((Estimators4Data1 - sum(seqNorm2))^2), varEstimator(Estimators4Data1, 1), BiasEst(Estimators4Data1, 1))
+table <- data.frame(column1, column2, column3, column4)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$\\hat{\\theta_1}$", "$\\hat{\\theta_2}$", "$\\hat{\\theta_3}$", "$\\hat{\\theta_4}$"))
+```
+
+<h4>Testy dla $\small N(4,1)$:</h4>
+```{r testingEST2Tab1, echo = FALSE, warning = FALSE, tidy = TRUE}
+rows <- c("Wariancja", "MSE", "Obciążenie")
+column1 <- c(varEstimator(Estimators1Data2, 4), varEstimator(Estimators1Data2, 4), BiasEst(Estimators1Data2, 4))
+column2 <- c(varEstimator(Estimators2Data2, 4), varEstimator(Estimators2Data2, 4), BiasEst(Estimators2Data2, 4))
+column3 <- c(varEstimator(Estimators3Data2, 4), varEstimator(Estimators3Data2, 4), BiasEst(Estimators3Data2, 4))
+column4 <- c(1/10000*sum((Estimators4Data2 - 4*sum(seqNorm2))^2),varEstimator(Estimators4Data2, 4), BiasEst(Estimators4Data2, 4))
+table <- data.frame(column1, column2, column3, column4)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$\\hat{\\theta_1}$", "$\\hat{\\theta_2}$", "$\\hat{\\theta_3}$", "$\\hat{\\theta_4}$"))
+```
+<h4>Testy dla $\small N(1,4)$:</h4>
+```{r testingEST3Tab1, echo = FALSE, warning = FALSE, tidy = TRUE}
+rows <- c("Wariancja", "MSE", "Obciążenie")
+column1 <- c(varEstimator(Estimators1Data3, 1), varEstimator(Estimators1Data3, 1), BiasEst(Estimators1Data3, 1))
+column2 <- c(varEstimator(Estimators2Data3, 1), varEstimator(Estimators2Data3, 1), BiasEst(Estimators2Data3, 1))
+column3 <- c(varEstimator(Estimators3Data3, 1), varEstimator(Estimators3Data3, 1), BiasEst(Estimators3Data3, 1))
+column4 <- c(1/10000*sum((Estimators4Data2 - sum(seqNorm2))^2),varEstimator(Estimators4Data2, 1), BiasEst(Estimators4Data2, 1))
+table <- data.frame(column1, column2, column3, column4)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$\\hat{\\theta_1}$", "$\\hat{\\theta_2}$", "$\\hat{\\theta_3}$", "$\\hat{\\theta_4}$"))
+
+```
+

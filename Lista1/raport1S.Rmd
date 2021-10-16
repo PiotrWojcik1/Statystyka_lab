@@ -131,3 +131,20 @@ knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "
 
 ```
 
+<h2>Zadanie 2</h2>
+<p>Komenda <code>set.seed(k)</code> ustala ziarno losowe na <em>k</em>, co wpływa na algorytm losujący deterministycznie. Oznacza to, że użycie tych samych komend w tej samej kolejności, wygeneruje ten sam wynik za każdym razem. Oznacza to oczywiście utratę (pseudo)losowości, przez co wszelkie operacje losowe tracą sens. Można by uznać, że jest to zupełnie zbędna, a nawet szkodliwa funkcja. Ma ona jednak zastosowanie we wszelakim rodzaju testów. Poczynając od zwykłych testów jednostkowych, kończąc na testach algotymów losowych. Jest to też użyteczne przy symulowaniu, kiedy za każdym razem, potrzebujemy tych samych warunków początkowych.</p>
+
+<h2>Zadanie 3</h2>
+<p>W celu znalezienia <em>estymatora największej wiarygodności</em>, szukamy maksimum funkcji największej wiarygodności $\small \hat{\theta}$. Takie maksimum będzie naszym estymatorem. W ogólności jest to proste zadanie z analizy, w którym wystarczy obliczyć odpowiednie pochodne i sprawdzić warunki na maksimum. Nie zawsze jednak ten proces jest wystarczający.</p>
+<p>Weźmy na przykład prostą próbę z rozkładu logistycznego $\small f(x;\theta)$. Wtedy, wykorzystując logarytm(dla ułatwienia rachunków) funkcji największej wiarygodności $\small \ell (\theta) = \sum_{i=1}^n{\log{f(x_i;\theta)}} = n\theta-n \overline{x}-2\sum_{i=1}^n{\log{(1+\exp{\{-(x_i-\theta)\}}})}$, znajdziemy estymator największej wiarygdności. Po obliczeniu pochodnej względem zmiennej $\small \theta$ i przyrównaniu jej do zera, dochodzimy do postaci, której nie da się już uprościć:</p>
+$$
+\small \sum_{i=1}^n{\frac{e^{-(x_i-\theta)}}{1 + e^{-(x_i-\theta)}}} = \frac{n}{2}.
+$$
+<p>Jednak okazuje się, że powyższe równanie, posiada unikatowe rozwiązanie, które jest również punktem maksymalnym naszej wyjściowej funkcji $\small \ell(\theta)$. Posiadając takie informacje, możemy wyznaczyć rozwiązanie z dużą dokładnością, metodami numerycznymi, na przykład, za pomocą <em>Metody Newtona</em>.</p>
+
+<h2>Zadanie 4</h2>
+<p>Metoda Newtona, pozwala na efektywne i dokładne wyznaczanie rozwiązania równania postaci $\small f(x) = 0$. W naszym kontekście, jest to $\small \ell'(\theta) = 0$. Aby zacząć, potrzebujemy startowego punktu $\small \theta_0$, który będzie względnie blisko naszego rozwiązania. Musimy się też upewnić, że na badanym przedziale, rozwiązanie jest jedyne. Wykorzystując następnie wzór:</p>
+$$
+\small \theta_1 =\theta_0 - \frac{\ell'(\theta_0)}{\ell''(\theta_0)},
+$$
+<p>wyznaczamy punkt przecięcia stycznej funkcji $\small \ell(\theta)$, w punkcie $\small \theta_0$ z osią $OX$. Powtarzając procedurę, dostajemy ciąg punktów $\small \{ \theta_n\}$, który potencjalnie zbiega do poszukiwanego rozwiązania. Trzeba mieć jednak na uwadzę fakt, że nie zawsze ta procedura jest możliwa, jak i to, że może nie dawać prawidłowych wyników. Ważnym jest więc, aby po skończonej procedule, weryfikować, czy uzyskany punkt, rzeczywiście jest bliski miejsca zerowego funkcji wyjściowej.</p>

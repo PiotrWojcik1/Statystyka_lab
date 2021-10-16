@@ -1,1 +1,0 @@
-# Statystyka_lab

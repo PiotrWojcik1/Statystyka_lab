@@ -98,10 +98,10 @@ BiasEst <- function(data, theta) {
 <h4>Testy dla $\small N(1,1)$:</h4>
 ```{r testingEST1Tab1, echo = FALSE, warning = FALSE, tidy = TRUE}
 rows <- c("Wariancja", "MSE", "Obciążenie")
-column1 <- c(varEstimator(Estimators1Data1, 1), varEstimator(Estimators1Data1, 1), BiasEst(Estimators1Data1, 1))
-column2 <- c(varEstimator(Estimators2Data1, 1), varEstimator(Estimators2Data1, 1), BiasEst(Estimators2Data1, 1))
-column3 <- c(varEstimator(Estimators3Data1, 1), varEstimator(Estimators3Data1, 1), BiasEst(Estimators3Data1, 1))
-column4 <- c(1/10000*sum((Estimators4Data1 - sum(seqNorm2))^2), varEstimator(Estimators4Data1, 1), BiasEst(Estimators4Data1, 1))
+column1 <- c(var(Estimators1Data1), varEstimator(Estimators1Data1, 1), BiasEst(Estimators1Data1, 1))
+column2 <- c(var(Estimators2Data1), varEstimator(Estimators2Data1, 1), BiasEst(Estimators2Data1, 1))
+column3 <- c(var(Estimators3Data1), varEstimator(Estimators3Data1, 1), BiasEst(Estimators3Data1, 1))
+column4 <- c(var(Estimators4Data1), varEstimator(Estimators4Data1, 1), BiasEst(Estimators4Data1, 1))
 table <- data.frame(column1, column2, column3, column4)
 row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$\\hat{\\theta_1}$", "$\\hat{\\theta_2}$", "$\\hat{\\theta_3}$", "$\\hat{\\theta_4}$"))
@@ -110,10 +110,10 @@ knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "
 <h4>Testy dla $\small N(4,1)$:</h4>
 ```{r testingEST2Tab1, echo = FALSE, warning = FALSE, tidy = TRUE}
 rows <- c("Wariancja", "MSE", "Obciążenie")
-column1 <- c(varEstimator(Estimators1Data2, 4), varEstimator(Estimators1Data2, 4), BiasEst(Estimators1Data2, 4))
-column2 <- c(varEstimator(Estimators2Data2, 4), varEstimator(Estimators2Data2, 4), BiasEst(Estimators2Data2, 4))
-column3 <- c(varEstimator(Estimators3Data2, 4), varEstimator(Estimators3Data2, 4), BiasEst(Estimators3Data2, 4))
-column4 <- c(1/10000*sum((Estimators4Data2 - 4*sum(seqNorm2))^2),varEstimator(Estimators4Data2, 4), BiasEst(Estimators4Data2, 4))
+column1 <- c(var(Estimators1Data2), varEstimator(Estimators1Data2, 4), BiasEst(Estimators1Data2, 4))
+column2 <- c(var(Estimators2Data2), varEstimator(Estimators2Data2, 4), BiasEst(Estimators2Data2, 4))
+column3 <- c(var(Estimators3Data2), varEstimator(Estimators3Data2, 4), BiasEst(Estimators3Data2, 4))
+column4 <- c(var(Estimators4Data2),varEstimator(Estimators4Data2, 4), BiasEst(Estimators4Data2, 4))
 table <- data.frame(column1, column2, column3, column4)
 row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$\\hat{\\theta_1}$", "$\\hat{\\theta_2}$", "$\\hat{\\theta_3}$", "$\\hat{\\theta_4}$"))
@@ -121,10 +121,10 @@ knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "
 <h4>Testy dla $\small N(1,4)$:</h4>
 ```{r testingEST3Tab1, echo = FALSE, warning = FALSE, tidy = TRUE}
 rows <- c("Wariancja", "MSE", "Obciążenie")
-column1 <- c(varEstimator(Estimators1Data3, 1), varEstimator(Estimators1Data3, 1), BiasEst(Estimators1Data3, 1))
-column2 <- c(varEstimator(Estimators2Data3, 1), varEstimator(Estimators2Data3, 1), BiasEst(Estimators2Data3, 1))
-column3 <- c(varEstimator(Estimators3Data3, 1), varEstimator(Estimators3Data3, 1), BiasEst(Estimators3Data3, 1))
-column4 <- c(1/10000*sum((Estimators4Data2 - sum(seqNorm2))^2),varEstimator(Estimators4Data2, 1), BiasEst(Estimators4Data2, 1))
+column1 <- c(var(Estimators1Data3), varEstimator(Estimators1Data3, 1), BiasEst(Estimators1Data3, 1))
+column2 <- c(var(Estimators2Data3), varEstimator(Estimators2Data3, 1), BiasEst(Estimators2Data3, 1))
+column3 <- c(var(Estimators3Data3), varEstimator(Estimators3Data3, 1), BiasEst(Estimators3Data3, 1))
+column4 <- c(var(Estimators4Data3), varEstimator(Estimators4Data3, 1), BiasEst(Estimators4Data3, 1))
 table <- data.frame(column1, column2, column3, column4)
 row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$\\hat{\\theta_1}$", "$\\hat{\\theta_2}$", "$\\hat{\\theta_3}$", "$\\hat{\\theta_4}$"))
@@ -132,7 +132,7 @@ knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "
 ```
 
 <h2>Zadanie 2</h2>
-<p>Komenda <code>set.seed(k)</code> ustala ziarno losowe na <em>k</em>, co wpływa na algorytm losujący deterministycznie. Oznacza to, że użycie tych samych komend w tej samej kolejności, wygeneruje ten sam wynik za każdym razem. Oznacza to oczywiście utratę (pseudo)losowości, przez co wszelkie operacje losowe tracą sens. Można by uznać, że jest to zupełnie zbędna, a nawet szkodliwa funkcja. Ma ona jednak zastosowanie we wszelakim rodzaju testów. Poczynając od zwykłych testów jednostkowych, kończąc na testach algotymów losowych. Jest to też użyteczne przy symulowaniu, kiedy za każdym razem, potrzebujemy tych samych warunków początkowych.</p>
+<p>Komenda <code>set.seed(k)</code> ustala ziarno losowe na <em>k</em>, co wpływa na algorytm losujący deterministyczno. Oznacza to, że użycie tych samych komend w tej samej kolejności, wygeneruje ten sam wynik za każdym razem. Oznacza to oczywiście utratę (pseudo)losowości, przez co wszelkie operacje losowe tracą sens. Można by uznać, że jest to zupełnie zbędna, a nawet szkodliwa funkcja. Ma ona jednak zastosowanie we wszelakim rodzaju testów. Poczynając od zwykłych testów jednostkowych, kończąc na testach algotymów losowych. Jest to też użyteczne przy symulowaniu, kiedy za każdym razem, potrzebujemy tych samych warunków początkowych.</p>
 
 <h2>Zadanie 3</h2>
 <p>W celu znalezienia <em>estymatora największej wiarygodności</em>, szukamy maksimum funkcji największej wiarygodności $\small \hat{\theta}$. Takie maksimum będzie naszym estymatorem. W ogólności jest to proste zadanie z analizy, w którym wystarczy obliczyć odpowiednie pochodne i sprawdzić warunki na maksimum. Nie zawsze jednak ten proces jest wystarczający.</p>
@@ -148,3 +148,67 @@ $$
 \small \theta_1 =\theta_0 - \frac{\ell'(\theta_0)}{\ell''(\theta_0)},
 $$
 <p>wyznaczamy punkt przecięcia stycznej funkcji $\small \ell(\theta)$, w punkcie $\small \theta_0$ z osią $OX$. Powtarzając procedurę, dostajemy ciąg punktów $\small \{ \theta_n\}$, który potencjalnie zbiega do poszukiwanego rozwiązania. Trzeba mieć jednak na uwadzę fakt, że nie zawsze ta procedura jest możliwa, jak i to, że może nie dawać prawidłowych wyników. Ważnym jest więc, aby po skończonej procedule, weryfikować, czy uzyskany punkt, rzeczywiście jest bliski miejsca zerowego funkcji wyjściowej.</p>
+
+<h2>Zadanie 5</h2>
+<p>W poniższym zadaniu wygenerujemy $\small n = 50$ obserwacji z rozkładu:</p>
+<ul>
+<li>$\small L(1,1)$,</li>
+<li>$\small L(4,1)$,</li>
+<li>$\small L(1,2)$.</li>
+</ul>
+```{r trial2, echo = FALSE, warning = FALSE, tidy = TRUE}
+LogistTrial1 <- rlogis(50, 1, 1)
+LogistTrial2 <- rlogis(50, 4, 1)
+LogistTrial3 <- rlogis(50, 1, 2)
+```
+<p>Następnie oszacujemy parametr przesunięcia $\small \theta$, metodą Newtona.</p>
+
+```{r NewtonsMethod, echo = FALSE, warning = FALSE, tidy = TRUE}
+
+Newtons_method <- function(data, derivative, s_derivative, start_point = mean(data), s, i) {
+  best_est <- start_point
+  for(k in 1:i) {
+    best_est <- best_est - derivative(data, best_est, s) / s_derivative(data, best_est, s)
+  }
+  return(best_est)
+}
+```
+
+```{r logisticFunctions, echo = FALSE, warning = FALSE, tidy = TRUE}
+nexp <- function(x,t,s) return(exp(-(x-t)/s))
+first_logistic_derivatice <- function(x, t, s) return(length(x)/s -2*sum(nexp(x,t,s)/(s*(1+nexp(x,t,s)))))
+second_logistic_derivatice <- function(x, t, s) return(-2/s^2*sum(nexp(x,t,s)/(1+nexp(x,t,s))^2))
+```
+
+```{r test_on_trial, echo = FALSE, warning = FALSE, tidy = TRUE}
+
+Newtons_method(LogistTrial2, first_logistic_derivatice, second_logistic_derivatice, s = 1, i = 10)
+Newtons_method(LogistTrial3, first_logistic_derivatice, second_logistic_derivatice, s = 2, i = 10)
+
+LogistTrial1 <- rlogis(50, 1, 1)
+est <- Newtons_method(LogistTrial1, first_logistic_derivatice, second_logistic_derivatice, s = 1, i = 10)
+mle(LogistTrial1, est, 1)
+mle(LogistTrial1, est-0.01, 1)
+mle(LogistTrial1, est+0.01, 1)
+
+LogistTrial2 <- rlogis(50, 4, 1)
+est <- Newtons_method(LogistTrial2, first_logistic_derivatice, second_logistic_derivatice, s = 1, i = 10)
+mle(LogistTrial2, est, 1)
+mle(LogistTrial2, est-0.01, 1)
+mle(LogistTrial2, est+0.01, 1)
+
+LogistTrial3 <- rlogis(50, 1, 2)
+est <- Newtons_method(LogistTrial3, first_logistic_derivatice, second_logistic_derivatice, s = 2, i = 10)
+mle(LogistTrial3, est, 2)
+mle(LogistTrial3, est-1, 2)
+mle(LogistTrial3, est+1, 2)
+
+plot(seq(1,2, by = 0.01), sapply(0:100, function(x) mle(LogistTrial3, (1 + x/100), 2)))
+lines(x = c(est, est), y = c(-500,500), type = "l", col = "red")
+
+
+```
+
+```{r}
+mle <- function(x,t,s) return(sum(-(x-t)/s - log(s) - log(1+2*nexp(x,t,s)+exp(-2*(x-t)/s))))
+```

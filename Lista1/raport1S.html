@@ -217,32 +217,32 @@ Dane przedstawimy w poniższej tabeli:
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\hat{\theta_1}\)</span></td>
-<td align="center">0.8826206</td>
-<td align="center">3.9104929</td>
-<td align="center">0.5999119</td>
+<td align="center">1.091133</td>
+<td align="center">3.9914327</td>
+<td align="center">0.7651593</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\hat{\theta_2}\)</span></td>
-<td align="center">0.9220530</td>
-<td align="center">3.9791761</td>
-<td align="center">0.3157604</td>
+<td align="center">1.250004</td>
+<td align="center">3.9628934</td>
+<td align="center">0.9755569</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\hat{\theta_3}\)</span></td>
-<td align="center">0.9023018</td>
-<td align="center">3.9326311</td>
-<td align="center">0.5795895</td>
+<td align="center">1.046304</td>
+<td align="center">3.9808847</td>
+<td align="center">0.7142081</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\hat{\theta_4}\)</span></td>
-<td align="center">0.7859631</td>
-<td align="center">0.9565468</td>
-<td align="center">2.1405338</td>
+<td align="center">0.877746</td>
+<td align="center">0.9526627</td>
+<td align="center">2.0072229</td>
 </tr>
 </tbody>
 </table>
 <p>
-Z uzyskanych liczb, nie jesteśmy w stanie wyciągnąć, zbyt wiele użytecznych wniosków. Najbardziej rzucające się w oczy, jest estymowanie parametru <span class="math inline">\(\small \theta\)</span>, estymatorem <span class="math inline">\(\small \hat{\theta_4}\)</span>, którego wartości, są najbardziej rozbieżne od prawdziwej wartości <span class="math inline">\(\small \theta\)</span>. Jest to spowodowane tym, że ciąg wag jaki dobraliśmy, nadaje największe znaczenie wyrazom, które są najbardziej ekstremalne. Warto też zwrócić uwagę na ostatnią kolumnę, z próbą z rozkładu <span class="math inline">\(\small N(1,4)\)</span>. Ma ona największą wariancję, przez co w ogólności, wszystkie estymatory osiągały gorsze przybliżenia, w porównaniu z pozostałymi rozkładami.
+Z uzyskanych liczb, nie jesteśmy w stanie wyciągnąć zbyt wiele użytecznych wniosków. Najbardziej rzucające się w oczy, jest estymowanie parametru <span class="math inline">\(\small \theta\)</span>, estymatorem <span class="math inline">\(\small \hat{\theta_4}\)</span>, którego wartości, są najbardziej rozbieżne od prawdziwej wartości <span class="math inline">\(\small \theta\)</span>. Jest to spowodowane tym, że ciąg wag jaki dobraliśmy, nadaje największe znaczenie wyrazom, które są najbardziej ekstremalne. Warto też zwrócić uwagę na ostatnią kolumnę, z próbą z rozkładu <span class="math inline">\(\small N(1,4)\)</span>. Ma ona największą wariancję, przez co w ogólności, wszystkie estymatory osiągały gorsze przybliżenia w porównaniu z pozostałymi rozkładami.
 </p>
 <p>
 Aby lepiej przyjrzeć się powyższym parametrom, wykonamy całe doświadczenie jeszcze <span class="math inline">\(\small 10000\)</span> razy, aby następnie, wykorzystując <em>Prawo Wielkich Liczb</em> oszacować:
@@ -252,14 +252,14 @@ Aby lepiej przyjrzeć się powyższym parametrom, wykonamy całe doświadczenie 
 <span class="math inline">\(\small Var(T)\)</span>,
 </li>
 <li>
-<span class="math inline">\(\small E[(T - \theta)^2]\)</span>,
+<span class="math inline">\(\small E \left[(T - \theta)^2 \right]\)</span>,
 </li>
 <li>
-<span class="math inline">\(\small E[T - \theta]\)</span>.
+<span class="math inline">\(\small E \left[T - \theta \right]\)</span>.
 </li>
 </ul>
 <p>
-Gdzie <span class="math inline">\(\small T\)</span> jest statystyką, która estymuje parametr <span class="math inline">\(\small \theta\)</span>.
+Gdzie <span class="math inline">\(\small T\)</span> jest statystyką która estymuje parametr <span class="math inline">\(\small \theta\)</span>.
 </p>
 <h4>
 Testy dla <span class="math inline">\(\small N(1,1)\)</span>:
@@ -277,24 +277,24 @@ Testy dla <span class="math inline">\(\small N(1,1)\)</span>:
 <tbody>
 <tr class="odd">
 <td align="left">Wariancja</td>
-<td align="center">0.0199693</td>
-<td align="center">0.0294902</td>
-<td align="center">0.0210636</td>
-<td align="center">0.0095768</td>
+<td align="center">0.0205326</td>
+<td align="center">0.0309073</td>
+<td align="center">0.0212349</td>
+<td align="center">0.0097185</td>
 </tr>
 <tr class="even">
 <td align="left">MSE</td>
-<td align="center">0.0199699</td>
-<td align="center">0.0294884</td>
-<td align="center">0.0210623</td>
-<td align="center">0.0104492</td>
+<td align="center">0.0205308</td>
+<td align="center">0.0309043</td>
+<td align="center">0.0212328</td>
+<td align="center">0.0105050</td>
 </tr>
 <tr class="odd">
 <td align="left">Obciążenie</td>
-<td align="center">0.0016207</td>
-<td align="center">0.0010751</td>
-<td align="center">0.0009052</td>
-<td align="center">-0.0295528</td>
+<td align="center">-0.0004676</td>
+<td align="center">0.0003647</td>
+<td align="center">0.0002409</td>
+<td align="center">-0.0280604</td>
 </tr>
 </tbody>
 </table>
@@ -314,24 +314,24 @@ Testy dla <span class="math inline">\(\small N(4,1)\)</span>:
 <tbody>
 <tr class="odd">
 <td align="left">Wariancja</td>
-<td align="center">0.0205696</td>
-<td align="center">0.0312623</td>
-<td align="center">0.0217951</td>
-<td align="center">0.0098633</td>
+<td align="center">0.0194523</td>
+<td align="center">0.0305244</td>
+<td align="center">0.0222919</td>
+<td align="center">0.0096295</td>
 </tr>
 <tr class="even">
 <td align="left">MSE</td>
-<td align="center">0.0205687</td>
-<td align="center">0.0312609</td>
-<td align="center">0.0217935</td>
-<td align="center">9.1746609</td>
+<td align="center">0.0194545</td>
+<td align="center">0.0305215</td>
+<td align="center">0.0222899</td>
+<td align="center">9.1788066</td>
 </tr>
 <tr class="odd">
 <td align="left">Obciążenie</td>
-<td align="center">0.0010765</td>
-<td align="center">-0.0012961</td>
-<td align="center">0.0008111</td>
-<td align="center">-3.0273418</td>
+<td align="center">-0.0020355</td>
+<td align="center">-0.0003800</td>
+<td align="center">-0.0004542</td>
+<td align="center">-3.0280651</td>
 </tr>
 </tbody>
 </table>
@@ -351,27 +351,30 @@ Testy dla <span class="math inline">\(\small N(1,4)\)</span>:
 <tbody>
 <tr class="odd">
 <td align="left">Wariancja</td>
-<td align="center">0.0792184</td>
-<td align="center">0.1247625</td>
-<td align="center">0.0863926</td>
-<td align="center">0.0389068</td>
+<td align="center">0.0799401</td>
+<td align="center">0.1231704</td>
+<td align="center">0.0852625</td>
+<td align="center">0.0385576</td>
 </tr>
 <tr class="even">
 <td align="left">MSE</td>
-<td align="center">0.0792180</td>
-<td align="center">0.1247515</td>
-<td align="center">0.0864298</td>
-<td align="center">0.9245512</td>
+<td align="center">0.0799322</td>
+<td align="center">0.1231621</td>
+<td align="center">0.0852540</td>
+<td align="center">0.9198419</td>
 </tr>
 <tr class="odd">
 <td align="left">Obciążenie</td>
-<td align="center">-0.0027330</td>
-<td align="center">-0.0011994</td>
-<td align="center">-0.0067674</td>
-<td align="center">0.9410889</td>
+<td align="center">0.0003264</td>
+<td align="center">0.0019991</td>
+<td align="center">0.0000194</td>
+<td align="center">0.9387695</td>
 </tr>
 </tbody>
 </table>
+<p>
+Podsumowując, powyższe tabele prezentują wyniki podobnych rzędów, gdzie najciekawsze wyniki, uzyskaliśmy w ostatniej kolumnie, gdzie testowaliśmy estymator <span class="math inline">\(\small \hat{\theta_4}\)</span>. Ponieważ jest on jako jedyny obciążonym estymatorem parametru <span class="math inline">\(\small \theta\)</span>, stąd zgodnie z teorią dostajemy duże obciążenie. Warto też zwrócić uwagę, że wyniki spełniają z dużą dokładnością równanie <span class="math inline">\(\small MSE(\hat{\theta}) = Var(\hat{\theta}) + Bias(\hat{\theta})^2\)</span>, co sugeruje, że nasze obliczenia są prawidłowe. Pierwsze trzy estymatory zdają się być najużyteczniejsze, ze względu na niską wariancję jak i obciążenie, co jest pożądane przy dobrych estymatorach. Choć zdecydowanie najmniejszą wariancję i obciążenie osiągamy przy <em>średniej próbkowej</em>, co zgadza się z teoretycznym faktem, że dla rozkładu normalnego, średnia próbkowa jest efektywnym estymatorem parametru <span class="math inline">\(\small \theta\)</span>.
+</p>
 <h2>
 Zadanie 2
 </h2>
@@ -409,7 +412,7 @@ wyznaczamy punkt przecięcia stycznej funkcji <span class="math inline">\(\small
 Zadanie 5
 </h2>
 <p>
-W poniższym zadaniu wygenerujemy <span class="math inline">\(\small n = 50\)</span> obserwacji z rozkładu:
+W poniższym zadaniu wygenerujemy <span class="math inline">\(\small n = 50\)</span> obserwacji z rozkładu logistycznego:
 </p>
 <ul>
 <li>
@@ -423,7 +426,771 @@ W poniższym zadaniu wygenerujemy <span class="math inline">\(\small n = 50\)</s
 </li>
 </ul>
 <p>
-Następnie oszacujemy parametr przesunięcia <span class="math inline">\(\small \theta\)</span>, metodą Newtona.
+Następnie oszacujemy parametr przesunięcia <span class="math inline">\(\small \theta\)</span>, metodą Newtona. W poniższej tabelce zaprezentujemy oszacowania:
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(L(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\theta\)</span></td>
+<td align="center">0.5342066</td>
+<td align="center">4.224193</td>
+<td align="center">0.9556771</td>
+</tr>
+</tbody>
+</table>
+<p>
+Do uzyskania powyższych wyników użyto pięciu kroków w algorytmie Newtona, aczkolwiek zazwyczaj wystarczy jednej bądź dwa. Jako punkt początkowy wybrano średnią, aby maksymalizować szansę zbieżności, ponieważ algorytm Newtona jest czuły na punkt początkowy i łatwo jest uzyskać rozbieżność bądź błędny wynik przy dużej rozbieżności między punktem początkowym i szukanym.
+</p>
+<p>
+Powtórzymy powyższy eksperyment <span class="math inline">\(\small 10000\)</span> razy, przy tej samiej liczbie kroków i punkcie startowym. Następnie wyznaczymy wariancję, błąd średniokwadratowy i obciążenie parametru <span class="math inline">\(\small \theta\)</span>, w celu przeanalizowania, czy nasza metoda estymacji jest sensowna. W poniższej tabeli zaprezentujemy wyniki:
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(L(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.0603548</td>
+<td align="center">0.0613338</td>
+<td align="center">0.2418438</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.0603642</td>
+<td align="center">0.0613280</td>
+<td align="center">0.2418788</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">-0.0039248</td>
+<td align="center">-0.0006051</td>
+<td align="center">-0.0076943</td>
+</tr>
+</tbody>
+</table>
+<p>
+Jak można zauważyć uzyskaliśmy wyniki, które sugerują, że metoda estymacji parametru <span class="math inline">\(\small \theta\)</span> którą wybraliśmy, jest słuszna. Warto też zwrócić uwagę, że prównywalnie dobre wyniki otrzymujemy, dla różnego doboru parametrów. Mamy trochę większą rozbieżność tylko w ostatniej próbie, gdzie skala jest równa dwa, choć jest to nadal bardzo satysfakcjonujący wynik.
+</p>
+<h2>
+Zadanie 6
+</h2>
+<p>
+W poniższym zadaniu wygenerujemy <span class="math inline">\(\small n = 50\)</span> obserwacji z rozkładu Cauchy’ego:
+</p>
+<ul>
+<li>
+<span class="math inline">\(\small C(1,1)\)</span>,
+</li>
+<li>
+<span class="math inline">\(\small C(4,1)\)</span>,
+</li>
+<li>
+<span class="math inline">\(\small C(1,2)\)</span>.
+</li>
+</ul>
+<p>
+Następnie oszacujemy parametr <span class="math inline">\(\small \theta\)</span>, metodą Newtona. W poniższej tabelce zaprezentujemy oszacowania:
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(C(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\theta\)</span></td>
+<td align="center">1.311143</td>
+<td align="center">3.983934</td>
+<td align="center">0.8983342</td>
+</tr>
+</tbody>
+</table>
+<p>
+Do uzyskania powyższych wyników użyto pięciu kroków w algorytmie Newtona, aczkolwiek zazwyczaj wystarczy jednej bądź dwa. Jako punkt początkowy wybrano rzeczywisty parametr <span class="math inline">\(\small \theta + 0.1\)</span>, aby maksymalizować szansę zbieżności, ponieważ rozkład Cauchy’ego nie posiada wartości oczekiwanej, więc wybranie średniej nie wpływa dobrze na zbieżność algorytmu Newtona, gdyż różni się ona bardzo, niezależnie od próby.
+</p>
+<p>
+Powtórzymy powyższy eksperyment <span class="math inline">\(\small 10000\)</span> razy, przy tej samiej liczbie kroków i punkcie startowym. Następnie wyznaczymy wariancję, błąd średniokwadratowy i obciążenie parametru <span class="math inline">\(\small \theta\)</span>, w celu przeanalizowania, czy nasza metoda estymacji jest sensowna. W poniższej tabeli zaprezentujemy wyniki:
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(C(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.0720626</td>
+<td align="center">0.0421413</td>
+<td align="center">0.1689565</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.0720585</td>
+<td align="center">0.0421372</td>
+<td align="center">0.1690108</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">-0.0017536</td>
+<td align="center">0.0003861</td>
+<td align="center">0.0084388</td>
+</tr>
+</tbody>
+</table>
+<p>
+Wyniki które uzyskaliśmy są stosunkowo dobre, aczkolwiek jest to spowodowane tym, że dobrany punkt startowy w algorytmie Newtona, różni się od prawdziwej wartości parametru <span class="math inline">\(\small \theta\)</span> tylko o <span class="math inline">\(\small 0.1\)</span>. Stąd nie jest to metoda, która w rzeczywistości jest użyteczna. Dla porównania zaprezentujemy teraz tabelę z wynikami, ale przy punkcie startowym <span class="math inline">\(\small \theta + 0.5\)</span> i pięciu krokach w algorytmie Newtona:
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(C(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">87.6907124</td>
+<td align="center">1432.9523050</td>
+<td align="center">0.2307552</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">87.6957204</td>
+<td align="center">1432.9675314</td>
+<td align="center">0.2307326</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">-0.1173758</td>
+<td align="center">-0.3981477</td>
+<td align="center">-0.0007013</td>
+</tr>
+</tbody>
+</table>
+<p>
+Jak widać, zmiana jaką dokonaliśmy jest mała, bo tylko przesuneliśmy punkt startowy o <span class="math inline">\(\small 0.4\)</span>, w porównaniu z poprzednim eksperymentem, a uzyskaliśmy wyniki, które nie są jakkolwiek sensowne.
+</p>
+<h2>
+Zadanie 7
+</h2>
+<p>
+W poniższym zadaniu powtórzymy eksperymenty numeryczne z zadań 1, 5 oraz 6, ale dla <span class="math inline">\(\small n = 20\)</span> i <span class="math inline">\(\small n = 100\)</span>, w celu przeanalizowania, czy zmiana wielkości próby znacznie wpływa na uzyskane wyniki.
+</p>
+<h3>
+Eksperyment z zadania 1 dla <span class="math inline">\(\small n = 20\)</span>
+</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(N(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(N(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(N(1,4)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\hat{\theta_1}\)</span></td>
+<td align="center">1.138172</td>
+<td align="center">4.0069271</td>
+<td align="center">1.015283</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\hat{\theta_2}\)</span></td>
+<td align="center">1.107113</td>
+<td align="center">4.1182190</td>
+<td align="center">1.196185</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\hat{\theta_3}\)</span></td>
+<td align="center">1.160723</td>
+<td align="center">3.9607542</td>
+<td align="center">1.050375</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\hat{\theta_4}\)</span></td>
+<td align="center">0.839393</td>
+<td align="center">0.5223242</td>
+<td align="center">1.500761</td>
+</tr>
+</tbody>
+</table>
+<p>
+Można szybko dostrzec, że wyniki które uzyskaliśmy w porównaniu z wynikami przy <span class="math inline">\(\small n = 50\)</span> są gorsze. Nie powinno nas to dziwić, ponieważ znaczne zmniejszenie wielkości próby daje gorsze wyniki. Zobaczymy czy jest to analogiczne przy testowaniu estymatorów:
+</p>
+<h4>
+Testy dla <span class="math inline">\(\small N(1,1)\)</span>:
+</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(\hat{\theta_1}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_2}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_3}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_4}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.0514013</td>
+<td align="center">0.0726852</td>
+<td align="center">0.0552313</td>
+<td align="center">0.0230069</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.0513972</td>
+<td align="center">0.0726897</td>
+<td align="center">0.0552525</td>
+<td align="center">0.0276247</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">-0.0010442</td>
+<td align="center">0.0034329</td>
+<td align="center">0.0051680</td>
+<td align="center">-0.0679713</td>
+</tr>
+</tbody>
+</table>
+<h4>
+Testy dla <span class="math inline">\(\small N(4,1)\)</span>:
+</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(\hat{\theta_1}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_2}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_3}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_4}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.0499747</td>
+<td align="center">0.0730628</td>
+<td align="center">0.0528115</td>
+<td align="center">0.0233288</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.0499772</td>
+<td align="center">0.0730742</td>
+<td align="center">0.0528075</td>
+<td align="center">9.4343857</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">0.0027416</td>
+<td align="center">-0.0043238</td>
+<td align="center">0.0011338</td>
+<td align="center">-3.0677450</td>
+</tr>
+</tbody>
+</table>
+<h4>
+Testy dla <span class="math inline">\(\small N(1,4)\)</span>:
+</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(\hat{\theta_1}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_2}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_3}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_4}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.2054024</td>
+<td align="center">0.2961619</td>
+<td align="center">0.2194157</td>
+<td align="center">0.0918636</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.2054051</td>
+<td align="center">0.2961445</td>
+<td align="center">0.2193939</td>
+<td align="center">0.8335193</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">-0.0048204</td>
+<td align="center">0.0035037</td>
+<td align="center">-0.0002539</td>
+<td align="center">0.8611997</td>
+</tr>
+</tbody>
+</table>
+<p>
+Wyniki jakie uzyskaliśmy są rzeczywiście gorsze, aczkolwiek nie są one na tyle złe by uznać, że próba wielkości <span class="math inline">\(\small 20\)</span> zaburza estymowanie parametru <span class="math inline">\(\theta\)</span> w tym szczególnym przypadku.
+</p>
+<h3>
+Eksperyment z zadania 1 dla <span class="math inline">\(\small n = 100\)</span>
+</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(N(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(N(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(N(1,4)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\hat{\theta_1}\)</span></td>
+<td align="center">0.8795223</td>
+<td align="center">4.132568</td>
+<td align="center">1.076459</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\hat{\theta_2}\)</span></td>
+<td align="center">0.8749788</td>
+<td align="center">4.159858</td>
+<td align="center">1.082615</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\hat{\theta_3}\)</span></td>
+<td align="center">0.8995615</td>
+<td align="center">4.105814</td>
+<td align="center">1.134848</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\hat{\theta_4}\)</span></td>
+<td align="center">0.9328106</td>
+<td align="center">1.091136</td>
+<td align="center">1.957526</td>
+</tr>
+</tbody>
+</table>
+<p>
+Jak moglibyśmy się spodziewać, wyniki jakie uzyskaliśmy są znacznie lepsze, poza estymatorem <span class="math inline">\(\small \hat{\theta_4}\)</span>, który nawet nie zbliża się do średniej w przypadku próby z rozkładu <span class="math inline">\(\small N(4,1)\)</span>.
+</p>
+<h4>
+Testy dla <span class="math inline">\(\small N(1,1)\)</span>:
+</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(\hat{\theta_1}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_2}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_3}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_4}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.0100823</td>
+<td align="center">0.0153268</td>
+<td align="center">0.0108123</td>
+<td align="center">0.0048940</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.0100829</td>
+<td align="center">0.0153256</td>
+<td align="center">0.0108113</td>
+<td align="center">0.0051193</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">0.0012779</td>
+<td align="center">-0.0005976</td>
+<td align="center">0.0001860</td>
+<td align="center">-0.0150268</td>
+</tr>
+</tbody>
+</table>
+<h4>
+Testy dla <span class="math inline">\(\small N(4,1)\)</span>:
+</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(\hat{\theta_1}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_2}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_3}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_4}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.0099201</td>
+<td align="center">0.0156591</td>
+<td align="center">0.0108998</td>
+<td align="center">0.004978</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.0099236</td>
+<td align="center">0.0156578</td>
+<td align="center">0.0108987</td>
+<td align="center">9.095288</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">0.0021109</td>
+<td align="center">0.0004986</td>
+<td align="center">-0.0001628</td>
+<td align="center">-3.015014</td>
+</tr>
+</tbody>
+</table>
+<h4>
+Testy dla <span class="math inline">\(\small N(1,4)\)</span>:
+</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(\hat{\theta_1}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_2}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_3}\)</span></th>
+<th align="center"><span class="math inline">\(\hat{\theta_4}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.0405454</td>
+<td align="center">0.0619039</td>
+<td align="center">0.0427446</td>
+<td align="center">0.0199384</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.0405426</td>
+<td align="center">0.0618988</td>
+<td align="center">0.0427404</td>
+<td align="center">0.9559032</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">0.0010786</td>
+<td align="center">0.0010548</td>
+<td align="center">0.0002499</td>
+<td align="center">0.9674538</td>
+</tr>
+</tbody>
+</table>
+<p>
+Przy testowaniu estymatora możemy zaobserwować, że rzeczywiście w ogólności estymator <span class="math inline">\(\small \hat{\theta_4}\)</span>, nie poprawia swojej dokładności, to znaczy obciążenie jest nadal duże jak przy <span class="math inline">\(\small n = 50\)</span>. Pozostałe estymatory widocznie poprawiły wyniki.
+</p>
+<h3>
+Eksperyment z zadania 5 dla <span class="math inline">\(\small n = 20\)</span>
+</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(L(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\theta\)</span></td>
+<td align="center">0.5857091</td>
+<td align="center">4.258776</td>
+<td align="center">0.6526346</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(L(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.1497632</td>
+<td align="center">0.1517826</td>
+<td align="center">0.6178748</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.1497482</td>
+<td align="center">0.1518045</td>
+<td align="center">0.6178370</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">0.0000315</td>
+<td align="center">0.0060921</td>
+<td align="center">-0.0048947</td>
+</tr>
+</tbody>
+</table>
+<p>
+Wyniki jakie uzyskaliśmy w powyższych dwóch tabelach są widocznie gorsze od tych, jakie uzyskaliśmy dla próby przy <span class="math inline">\(\small n = 50\)</span>, przez co taki rozmiar próby dla tego rozkładu zdaje się nie wystarczać do estymowania parametru <span class="math inline">\(\small \theta\)</span>.
+</p>
+<h3>
+Eksperyment z zadania 5 dla <span class="math inline">\(\small n = 100\)</span>
+</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(L(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\theta\)</span></td>
+<td align="center">1.000651</td>
+<td align="center">3.904649</td>
+<td align="center">0.8488973</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(L(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(L(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.0302818</td>
+<td align="center">0.0297880</td>
+<td align="center">0.1199745</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.0302832</td>
+<td align="center">0.0297927</td>
+<td align="center">0.1199666</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">-0.0021169</td>
+<td align="center">0.0027601</td>
+<td align="center">0.0020160</td>
+</tr>
+</tbody>
+</table>
+<p>
+Uzyskane wyniki przy próbie rozmiaru <span class="math inline">\(\small n = 100\)</span>, zdają się dawać znacznie lepsze szacowania, choć wyniki jakie uzyskaliśmy przy próbie 50-elementowej nie były złe do szacowania parametru <span class="math inline">\(\small \theta\)</span>.
+</p>
+<h3>
+Eksperyment z zadania 6 dla <span class="math inline">\(\small n = 20\)</span>
+</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(C(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\theta\)</span></td>
+<td align="center">1.112772</td>
+<td align="center">3.665055</td>
+<td align="center">0.7372223</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(C(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">1492.9363259</td>
+<td align="center">1391.281972</td>
+<td align="center">31219.635458</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">1493.1405068</td>
+<td align="center">1391.308398</td>
+<td align="center">31218.587136</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">-0.5945373</td>
+<td align="center">0.406884</td>
+<td align="center">1.440015</td>
+</tr>
+</tbody>
+</table>
+<p>
+Zmniejszenie próby do <span class="math inline">\(\small n = 20\)</span> znacznie wpłynęło na estymowanie parametru <span class="math inline">\(\small \theta\)</span> w taki sposób, że stało się ono już zupełnie bezsensowne pomimo ustalenia punktu początkowego na <span class="math inline">\(\small \theta + 0.1\)</span> i ilości iteracji na pięć. W poniższej tabelce mamy sytuację dla punktu początkowego równego <span class="math inline">\(\small \theta + 0.5\)</span> i ilości iteracji równej 5, przy którym uzyskujemy jeszcze gorsze statystyki:
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(C(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">63592.8265</td>
+<td align="center">163943.736222</td>
+<td align="center">12164.6770362</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">63594.7771</td>
+<td align="center">163984.687724</td>
+<td align="center">12163.6486291</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">-2.8827</td>
+<td align="center">-7.572706</td>
+<td align="center">-0.4336595</td>
+</tr>
+</tbody>
+</table>
+<h3>
+Eksperyment z zadania 6 dla <span class="math inline">\(\small n = 100\)</span>
+</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(C(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\theta\)</span></td>
+<td align="center">0.9741188</td>
+<td align="center">4.194795</td>
+<td align="center">0.95594</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(C(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">0.0206760</td>
+<td align="center">0.0204715</td>
+<td align="center">0.0846289</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">0.0206744</td>
+<td align="center">0.0204703</td>
+<td align="center">0.0846249</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">0.0006995</td>
+<td align="center">0.0009282</td>
+<td align="center">0.0021197</td>
+</tr>
+</tbody>
+</table>
+<p>
+Dla próby rozmiaru <span class="math inline">\(\small n = 100\)</span> uzyskujemy znacznie lepsze wyniki przy punkcie początkowym <span class="math inline">\(\small \theta + 0.1\)</span>, stąd też można oczekiwać, że przy punkcie początkowym <span class="math inline">\(\small \theta + 0.5\)</span> uzyskamy lepsze wyniki.
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(C(1,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(4,1)\)</span></th>
+<th align="center"><span class="math inline">\(C(1,2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wariancja</td>
+<td align="center">1.0295605</td>
+<td align="center">0.0861164</td>
+<td align="center">0.0825388</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="center">1.0295929</td>
+<td align="center">0.0861182</td>
+<td align="center">0.0825338</td>
+</tr>
+<tr class="odd">
+<td align="left">Obciążenie</td>
+<td align="center">0.0116342</td>
+<td align="center">-0.0032395</td>
+<td align="center">0.0018041</td>
+</tr>
+</tbody>
+</table>
+<p>
+Rzeczywiście wyniki jakie uzyskaliśmy dają nam sensowne wyniki, dzięki czemu metoda Newtona okazuje się znacznie użyteczniejsza wraz ze wzrostem rozmiaru próby dla rozkładu Cauchy’ego.
 </p>
 
 

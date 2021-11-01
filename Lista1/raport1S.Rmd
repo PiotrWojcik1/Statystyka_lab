@@ -5,7 +5,6 @@ date: "10/10/2021"
 output: html_document
 ---
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 options(scipen=999)
@@ -61,7 +60,7 @@ row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$N(1,1)$", "$N(4,1)$", "$N(1,4)$"))
 ```
 <p>Z uzyskanych liczb, nie jesteśmy w stanie wyciągnąć zbyt wiele użytecznych wniosków. Najbardziej rzucające się w oczy, jest estymowanie parametru $\small \theta$, estymatorem $\small \hat{\theta_4}$, którego wartości, są najbardziej rozbieżne od prawdziwej wartości $\small \theta$. Jest to spowodowane tym, że ciąg wag jaki dobraliśmy, nadaje największe znaczenie wyrazom, które są najbardziej ekstremalne. Warto też zwrócić uwagę na ostatnią kolumnę, z próbą z rozkładu $\small N(1,4)$. Ma ona największą wariancję, przez co w ogólności, wszystkie estymatory osiągały gorsze przybliżenia w porównaniu z pozostałymi rozkładami.</p>
-<p>Aby lepiej przyjrzeć się powyższym parametrom, wykonamy całe doświadczenie jeszcze $\small 10000$ razy, aby następnie, wykorzystując <em>Prawo Wielkich Liczb</em> oszacować:</p>
+<p>Aby lepiej przyjrzeć się powyższym parametrom, wykonamy całe doświadczenie jeszcze $\small 10000$ razy, aby następnie, wykorzystując <em>Prawo Wielkich Liczb</em>, oszacować:</p>
 <ul>
 <li>$\small Var(T)$,</li>
 <li>$\small E \left[(T - \theta)^2 \right]$,</li>
@@ -129,24 +128,25 @@ table <- data.frame(column1, column2, column3, column4)
 row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$\\hat{\\theta_1}$", "$\\hat{\\theta_2}$", "$\\hat{\\theta_3}$", "$\\hat{\\theta_4}$"))
 ```
-<p>Podsumowując, powyższe tabele prezentują wyniki podobnych rzędów, gdzie najciekawsze wyniki, uzyskaliśmy w ostatniej kolumnie, gdzie testowaliśmy estymator $\small \hat{\theta_4}$. Ponieważ jest on jako jedyny obciążonym estymatorem parametru $\small \theta$, stąd zgodnie z teorią dostajemy duże obciążenie. Warto też zwrócić uwagę, że wyniki spełniają z dużą dokładnością równanie $\small MSE(\hat{\theta}) = Var(\hat{\theta}) + Bias(\hat{\theta})^2$, co sugeruje, że nasze obliczenia są prawidłowe. Pierwsze trzy estymatory zdają się być najużyteczniejsze, ze względu na niską wariancję jak i obciążenie, co jest pożądane przy dobrych estymatorach. Choć zdecydowanie najmniejszą wariancję i obciążenie osiągamy przy <em>średniej próbkowej</em>, co zgadza się z teoretycznym faktem, że dla rozkładu normalnego, średnia próbkowa jest efektywnym estymatorem parametru $\small \theta$.</p>
+<p>Podsumowując, powyższe tabele prezentują wyniki podobnych rzędów, gdzie najciekawsze wyniki uzyskaliśmy w ostatniej kolumnie, gdzie testowaliśmy estymator $\small \hat{\theta_4}$. Ponieważ jest on jako jedyny obciążonym estymatorem parametru $\small \theta$, stąd zgodnie z teorią dostajemy duże obciążenie. Warto też zwrócić uwagę, że wyniki spełniają z dużą dokładnością równanie $\small MSE(\hat{\theta}) = Var(\hat{\theta}) + Bias(\hat{\theta})^2$, co sugeruje, że nasze obliczenia są prawidłowe. Pierwsze trzy estymatory zdają się być najużyteczniejsze, ze względu na niską wariancję jak i obciążenie, co jest pożądane przy dobrych estymatorach. Choć zdecydowanie najmniejszą wariancję i obciążenie osiągamy przy <em>średniej próbkowej</em>, co zgadza się z teoretycznym faktem, że dla rozkładu normalnego, średnia próbkowa jest najefektywniejszym estymatorem parametru $\small \theta$.</p>
+
 <h2>Zadanie 2</h2>
-<p>Komenda <code>set.seed(k)</code> ustala ziarno losowe na <em>k</em>, co wpływa na algorytm losujący deterministyczno. Oznacza to, że użycie tych samych komend w tej samej kolejności, wygeneruje ten sam wynik za każdym razem. Oznacza to oczywiście utratę (pseudo)losowości, przez co wszelkie operacje losowe tracą sens. Można by uznać, że jest to zupełnie zbędna, a nawet szkodliwa funkcja. Ma ona jednak zastosowanie we wszelakim rodzaju testów. Poczynając od zwykłych testów jednostkowych, kończąc na testach algotymów losowych. Jest to też użyteczne przy symulowaniu, kiedy za każdym razem, potrzebujemy tych samych warunków początkowych.</p>
+<p>Komenda <code>set.seed(k)</code> ustala ziarno losowe na <em>k</em>, co wpływa na algorytm losujący deterministycznie. Oznacza to, że użycie tych samych komend w tej samej kolejności, wygeneruje ten sam wynik za każdym razem. Oznacza to oczywiście utratę (pseudo)losowości, przez co wszelkie operacje losowe tracą sens. Można by uznać, że jest to zupełnie zbędna, a nawet szkodliwa funkcja. Ma ona jednak zastosowanie we wszelakim rodzaju testów. Poczynając od zwykłych testów jednostkowych, kończąc na testach algotymów losowych. Jest to też użyteczne przy symulowaniu, kiedy za każdym razem potrzebujemy tych samych warunków początkowych.</p>
 
 <h2>Zadanie 3</h2>
 <p>W celu znalezienia <em>estymatora największej wiarygodności</em>, szukamy maksimum funkcji największej wiarygodności $\small \hat{\theta}$. Takie maksimum będzie naszym estymatorem. W ogólności jest to proste zadanie z analizy, w którym wystarczy obliczyć odpowiednie pochodne i sprawdzić warunki na maksimum. Nie zawsze jednak ten proces jest wystarczający.</p>
-<p>Weźmy na przykład prostą próbę z rozkładu logistycznego $\small f(x;\theta)$. Wtedy, wykorzystując logarytm(dla ułatwienia rachunków) funkcji największej wiarygodności $\small \ell (\theta) = \sum_{i=1}^n{\log{f(x_i;\theta)}} = n\theta-n \overline{x}-2\sum_{i=1}^n{\log{(1+\exp{\{-(x_i-\theta)\}}})}$, znajdziemy estymator największej wiarygdności. Po obliczeniu pochodnej względem zmiennej $\small \theta$ i przyrównaniu jej do zera, dochodzimy do postaci, której nie da się już uprościć:</p>
+<p>Weźmy na przykład prostą próbę z rozkładu logistycznego $\small f(x;\theta)$. Wtedy, wykorzystując logarytm(dla ułatwienia rachunków) funkcji największej wiarygodności $\small \ell (\theta) = \sum_{i=1}^n{\log{f(x_i;\theta)}} = n\theta-n \overline{x}-2\sum_{i=1}^n{\log{(1+\exp{\{-(x_i-\theta)\}}})}$, znajdziemy estymator największej wiarygodności. Po obliczeniu pochodnej względem zmiennej $\small \theta$ i przyrównaniu jej do zera, dochodzimy do postaci, której nie da się już uprościć:</p>
 $$
 \small \sum_{i=1}^n{\frac{e^{-(x_i-\theta)}}{1 + e^{-(x_i-\theta)}}} = \frac{n}{2}.
 $$
-<p>Jednak okazuje się, że powyższe równanie, posiada unikatowe rozwiązanie, które jest również punktem maksymalnym naszej wyjściowej funkcji $\small \ell(\theta)$. Posiadając takie informacje, możemy wyznaczyć rozwiązanie z dużą dokładnością, metodami numerycznymi, na przykład, za pomocą <em>Metody Newtona</em>.</p>
+<p>Jednak okazuje się, że powyższe równanie posiada unikatowe rozwiązanie, które jest również punktem maksymalnym naszej wyjściowej funkcji $\small \ell(\theta)$. Posiadając takie informacje, możemy wyznaczyć rozwiązanie z dużą dokładnością, metodami numerycznymi, na przykład, za pomocą <em>metody Newtona</em>.</p>
 
 <h2>Zadanie 4</h2>
 <p>Metoda Newtona, pozwala na efektywne i dokładne wyznaczanie rozwiązania równania postaci $\small f(x) = 0$. W naszym kontekście, jest to $\small \ell'(\theta) = 0$. Aby zacząć, potrzebujemy startowego punktu $\small \theta_0$, który będzie względnie blisko naszego rozwiązania. Musimy się też upewnić, że na badanym przedziale, rozwiązanie jest jedyne. Wykorzystując następnie wzór:</p>
 $$
 \small \theta_1 =\theta_0 - \frac{\ell'(\theta_0)}{\ell''(\theta_0)},
 $$
-<p>wyznaczamy punkt przecięcia stycznej funkcji $\small \ell(\theta)$, w punkcie $\small \theta_0$ z osią $OX$. Powtarzając procedurę, dostajemy ciąg punktów $\small \{ \theta_n\}$, który potencjalnie zbiega do poszukiwanego rozwiązania. Trzeba mieć jednak na uwadzę fakt, że nie zawsze ta procedura jest możliwa, jak i to, że może nie dawać prawidłowych wyników. Ważnym jest więc, aby po skończonej procedule, weryfikować, czy uzyskany punkt, rzeczywiście jest bliski miejsca zerowego funkcji wyjściowej.</p>
+<p>wyznaczamy punkt przecięcia stycznej funkcji $\small \ell(\theta)$, w punkcie $\small \theta_0$ z osią $OX$. Powtarzając procedurę, dostajemy ciąg punktów $\small \{ \theta_n\}$, który potencjalnie zbiega do poszukiwanego rozwiązania. Trzeba mieć jednak na uwadze fakt, że nie zawsze ta procedura jest możliwa, jak i to, że może nie dawać prawidłowych wyników. Ważnym jest więc, aby po skończonej procedurze weryfikować, czy uzyskany punkt rzeczywiście jest bliski miejsca zerowego funkcji wyjściowej.</p>
 
 <h2>Zadanie 5</h2>
 <p>W poniższym zadaniu wygenerujemy $\small n = 50$ obserwacji z rozkładu logistycznego:</p>
@@ -160,7 +160,7 @@ LogistTrial1 <- rlogis(50, 1, 1)
 LogistTrial2 <- rlogis(50, 4, 1)
 LogistTrial3 <- rlogis(50, 1, 2)
 ```
-<p>Następnie oszacujemy parametr przesunięcia $\small \theta$, metodą Newtona. W poniższej tabelce zaprezentujemy oszacowania:</p>
+<p>Następnie oszacujemy parametr przesunięcia $\small \theta$ metodą Newtona. W poniższej tabelce zaprezentujemy oszacowania:</p>
 ```{r NewtonsMethod, echo = FALSE, warning = FALSE, tidy = TRUE}
 
 Newtons_method <- function(data, derivative, s_derivative, start_point = mean(data), s, i) {
@@ -194,7 +194,7 @@ row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$L(1,1)$", "$L(4,1)$", "$L(1,2)$"))
 ```
 <p>Do uzyskania powyższych wyników użyto pięciu kroków w algorytmie Newtona, aczkolwiek zazwyczaj wystarczy jednej bądź dwa. Jako punkt początkowy wybrano średnią, aby maksymalizować szansę zbieżności, ponieważ algorytm Newtona jest czuły na punkt początkowy i łatwo jest uzyskać rozbieżność bądź błędny wynik przy dużej rozbieżności między punktem początkowym i szukanym.</p>
-<p>Powtórzymy powyższy eksperyment $\small 10000$ razy, przy tej samiej liczbie kroków i punkcie startowym. Następnie wyznaczymy wariancję, błąd średniokwadratowy i obciążenie parametru $\small \theta$, w celu przeanalizowania, czy nasza metoda estymacji jest sensowna. W poniższej tabeli zaprezentujemy wyniki:</p>
+<p>Powtórzymy powyższy eksperyment $\small 10000$ razy, przy tej samiej liczbie kroków i punkcie startowym. Następnie wyznaczymy wariancję, błąd średniokwadratowy i obciążenie parametru $\small \theta$ w celu przeanalizowania, czy nasza metoda estymacji jest sensowna. W poniższej tabeli zaprezentujemy wyniki:</p>
 ```{r data_for_tables_2, echo = FALSE, warning = FALSE, tidy = TRUE}
 LogisticTrial1Est <- sapply(1:10000, function(x) Newtons_method(rlogis(50, 1, 1), first_logistic_derivative, second_logistic_derivative, s = 1, i = 5))
 LogisticTrial2Est <- sapply(1:10000, function(x) Newtons_method(rlogis(50, 4, 1), first_logistic_derivative, second_logistic_derivative, s = 1, i = 5))
@@ -208,7 +208,7 @@ table <- data.frame(column1, column2, column3)
 row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$L(1,1)$", "$L(4,1)$", "$L(1,2)$"))
 ```
-<p>Jak można zauważyć uzyskaliśmy wyniki, które sugerują, że metoda estymacji parametru $\small \theta$ którą wybraliśmy, jest słuszna. Warto też zwrócić uwagę, że prównywalnie dobre wyniki otrzymujemy, dla różnego doboru parametrów. Mamy trochę większą rozbieżność tylko w ostatniej próbie, gdzie skala jest równa dwa, choć jest to nadal bardzo satysfakcjonujący wynik.</p>
+<p>Jak można zauważyć uzyskaliśmy wyniki, które sugerują, że metoda estymacji parametru $\small \theta$, którą wybraliśmy, jest słuszna. Warto też zwrócić uwagę, że porównywalnie dobre wyniki otrzymujemy dla różnego doboru parametrów. Mamy trochę większą rozbieżność tylko w ostatniej próbie, gdzie skala jest równa dwa, choć jest to nadal bardzo satysfakcjonujący wynik.</p>
 <h2>Zadanie 6</h2>
 <p>W poniższym zadaniu wygenerujemy $\small n = 50$ obserwacji z rozkładu Cauchy'ego:</p>
 <ul>
@@ -221,7 +221,7 @@ CauchyTrial1 <- rcauchy(50, 1, 1)
 CauchyTrial2 <- rcauchy(50, 4, 1)
 CauchyTrial3 <- rcauchy(50, 1, 2)
 ```
-<p>Następnie oszacujemy parametr $\small \theta$, metodą Newtona. W poniższej tabelce zaprezentujemy oszacowania:</p>
+<p>Następnie oszacujemy parametr $\small \theta$ metodą Newtona. W poniższej tabelce zaprezentujemy oszacowania:</p>
 ```{r cauchyFunctions, echo = FALSE, warning = FALSE, tidy = TRUE}
 first_cauchy_derivative <- function(x, t, s) return(2*sum((x-t)/((x-t)^2 + s^2)))
 second_cauchy_derivative <- function(x, t, s) return(2*sum(((x-t)^2 - s^2)/(((x-t)^2 + s^2)^2)))
@@ -447,7 +447,7 @@ row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("$\\hat{\\theta_1}$", "$\\hat{\\theta_2}$", "$\\hat{\\theta_3}$", "$\\hat{\\theta_4}$"))
 ```
 
-<p>Przy testowaniu estymatora możemy zaobserwować, że rzeczywiście w ogólności estymator $\small \hat{\theta_4}$, nie poprawia swojej dokładności, to znaczy obciążenie jest nadal duże jak przy $\small n = 50$. Pozostałe estymatory widocznie poprawiły wyniki.</p>
+<p>Przy testowaniu estymatora możemy zaobserwować, że rzeczywiście w ogólności estymator $\small \hat{\theta_4}$, nie poprawia swojej dokładności, to znaczy obciążenie jest tak duże jak przy $\small n = 50$. Pozostałe estymatory widocznie poprawiły wyniki.</p>
 
 <h3>Eksperyment z zadania 5 dla $\small n = 20$</h3>
 ```{r 20table_with_theta_1, echo = FALSE, warning = FALSE, tidy = TRUE}

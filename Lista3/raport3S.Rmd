@@ -123,7 +123,7 @@ T = \frac{\overline{X} - \mu}{s/\sqrt{n}},
 $$
 <p>dostajemy zmienną o rozkładzie studenta z $\small n - 1$ stopniami swobody. Oznacza to, że jedyna różnica w porównaniu z poprzednim zadaniem jest w doborze kwantyli $\small t_{\alpha/2}$ i $\small t_{1-\alpha/2}$ z rozkładu studenta z $\small n-1$ stopniami swobody, zamiast kwantyli z rozkładu normalnego. Ostatecznie więc, nasz przedział ufności jest postaci:</p>
 $$
-\overline{X} - t_{1- \alpha/2} \frac{\sigma}{\sqrt{n}} \leq \mu \leq \overline{X} + t_{1 + \alpha/2} \frac{\sigma}{\sqrt{n}}.
+\overline{X} - t_{1- \alpha/2} \frac{\sigma}{\sqrt{n}} \leq \mu \leq \overline{X} + t_{1 - \alpha/2} \frac{\sigma}{\sqrt{n}}.
 $$
 
 <h2>Zadanie 4</h2>
@@ -203,10 +203,51 @@ knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "
 <p>Wyniki oczywiście są analogiczne do tych jakie uzyskaliśmy w zadaniu 6, ponieważ konstrukcja wykorzystana tutaj, korzysta z tego samego faktu co w konstrukcji z zadania 6.</p>
 
 <h2>Zadanie 9</h2>
-
+<p>Weźmy próbę $\small X_1 , \ldots X_n$ z rozkładu $\small b(p, 1)$. Wtedy $\small \hat{p} = 1/n\sum_{i = 1}^n{X_i}$ posiada wartość oczekiwaną $\small E[\hat{p}] = p$ oraz wariancję $\small Var(\hat{p}) = \frac{p(1-p)}{n}$. Korzystając z <em>centralnego twierdzenia granicznego</em> dostajemy, że statystyka:</p>
+$$
+\frac{\hat{p} - p}{\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}}
+$$
+<p>ma w przybliżeniu rozkład normalny dla dużych $\small n$(asymptotycznie normalny rozkład). Stąd już możemy wyprowadzić asymptotyczny przedział ufności dla proporcji $\small p$ na poziomie ufności $\small \alpha - 1$ postaci:</p>
+$$
+\left[ \hat{p} - z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \ , \ \hat{p} + z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\right].
+$$
+<p>Przy czym $\small z_{1- \alpha/2}$ to kwantyl rzędu $\small 1 - \alpha/2$ z rozkładu standardowego normalnego.</p>
 
 <h2>Zadanie 10</h2>
+<p>W poniższym zadaniu powtórzymy zadanie 2 dla podpunktów (a), (b) oraz (c). Następnie wykorzystamy wyznaczone prawdopodobieństwo pokrycia jako frakcję $\small \hat{p}$ z poprzedniego zadania, w celu wyprowadzenia przedziału ufności dla proporcji na poziomie ufności $\small 1 - \alpha = 0.95$.</p>
+```{r ex10data, echo = TRUE, warning = FALSE, tidy = TRUE}
+ex10_data <- freq_gen(real_means, norm_known_variance_int, trails_gen, sd)[1:9]
+proporiton_int <- function(p, alpha = 0.05, n = 10000) {
+  z <- qnorm(1 - alpha/2)
+  return(c(p - z*sqrt(p*(1-p)/n), p + z*sqrt(p*(1-p)/n)))
+}
+```
+<h4>Podpunkt (a)</h4>
+<p>W poniższym przypadku mamy do czynienia z rozkładami normalnymi. Poniżej zaprezentujemy wszystkie 3 przedziały ufności dla proporcji, dla wszystkich trzech rozkładów w kolejności występowania jak w zadaniu 2:</p>
+$$
+[`r proporiton_int(ex10_data[[1]][1])[1]` \ , \ `r proporiton_int(ex10_data[[1]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[2]][1])[1]` \ , \ `r proporiton_int(ex10_data[[2]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[3]][1])[1]` \ , \ `r proporiton_int(ex10_data[[3]][1])[2]`].
+$$
+<p>Jak mogliśmy się spodziewać, nasze przedziały są skoncentorwane blisko $\small 0.95$, ponieważ wszystkie testy jakie wykonywaliśmy w zadaniu 2 były na poziomie ufność $0.95$. Są one bardzo wąskie, ale widać, że każdy kolejny jest szerszy od poprzedniego, ponieważ dla kolejnych rozkładów wariancja była większa.</p>
 
+<h4>Podpunkt (b)</h4>
+<p>W poniższym przypadku mamy do czynienia z rozkładami logistycznymi. Poniżej zaprezentujemy wszystkie 3 przedziały ufności dla proporcji, dla wszystkich trzech rozkładów w kolejności występowania jak w zadaniu 2:</p>
+$$
+[`r proporiton_int(ex10_data[[4]][1])[1]` \ , \ `r proporiton_int(ex10_data[[4]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[5]][1])[1]` \ , \ `r proporiton_int(ex10_data[[5]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[6]][1])[1]` \ , \ `r proporiton_int(ex10_data[[6]][1])[2]`].
+$$
+<p>Jak w podpunkcie (a), nasze przedziały są skoncentorwane blisko $\small 0.95$, ponieważ wszystkie testy jakie wykonywaliśmy w zadaniu 2 były na poziomie ufność $0.95$. Są one bardzo wąskie, ale widać, że każdy kolejny jest szerszy od poprzedniego, ponieważ dla kolejnych rozkładów wariancja była większa.</p>
+
+<h4>Podpunkt (c)</h4>
+<p>W poniższym przypadku mamy do czynienia z rozkładami Cauchy'ego. Poniżej zaprezentujemy wszystkie 3 przedziały ufności dla proporcji, dla wszystkich trzech rozkładów w kolejności występowania jak w zadaniu 2:</p>
+$$
+[`r proporiton_int(ex10_data[[7]][1])[1]` \ , \ `r proporiton_int(ex10_data[[7]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[8]][1])[1]` \ , \ `r proporiton_int(ex10_data[[8]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[9]][1])[1]` \ , \ `r proporiton_int(ex10_data[[9]][1])[2]`].
+$$
+<p>Powyższe przedziały zupełnie odbiegają od tych w podpunktach (a) i (b) czego się spodziewaliśmy, ponieważ już w samym zadaniu drugim uzyskaliśmy bezsensowne wyniki z powodu braku zbieżności "ustandaryzowanego" rozkładu Cauchy'ego do rozkładu standardowego normalnego.</p>
 
 <h2>Zadanie 11</h2>
 <p>W poniższym zadaniu powtórzymy eksperymenty numeryczne z zadań 2, 4, 6, 8 i 10, ale dla prób o rozmiarze $\small n = 20$ i $\small n = 100$, w celu przeanalizowania jak zmiana rozmiaru próby wpływa na nasze wyniki.</p>
@@ -295,5 +336,58 @@ row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
 ```
 <h4>Eksperyment z zadania 10 dla $\small n = 20$</h4>
+```{r ex10data20, echo = TRUE, warning = FALSE, tidy = TRUE}
+ex10_data <- freq_gen(real_means, norm_known_variance_int, trails_gen, sd, trial_size = 20)[1:9]
+proporiton_int <- function(p, alpha = 0.05, n = 10000) {
+  z <- qnorm(1 - alpha/2)
+  return(c(p - z*sqrt(p*(1-p)/n), p + z*sqrt(p*(1-p)/n)))
+}
+```
+<h4>Podpunkt (a)</h4>
+$$
+[`r proporiton_int(ex10_data[[1]][1])[1]` \ , \ `r proporiton_int(ex10_data[[1]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[2]][1])[1]` \ , \ `r proporiton_int(ex10_data[[2]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[3]][1])[1]` \ , \ `r proporiton_int(ex10_data[[3]][1])[2]`].
+$$
+<h4>Podpunkt (b)</h4>
+$$
+[`r proporiton_int(ex10_data[[4]][1])[1]` \ , \ `r proporiton_int(ex10_data[[4]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[5]][1])[1]` \ , \ `r proporiton_int(ex10_data[[5]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[6]][1])[1]` \ , \ `r proporiton_int(ex10_data[[6]][1])[2]`].
+$$
+<h4>Podpunkt (c)</h4>
+$$
+[`r proporiton_int(ex10_data[[7]][1])[1]` \ , \ `r proporiton_int(ex10_data[[7]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[8]][1])[1]` \ , \ `r proporiton_int(ex10_data[[8]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[9]][1])[1]` \ , \ `r proporiton_int(ex10_data[[9]][1])[2]`].
+$$
+
+
 <h4>Eksperyment z zadania 10 dla $\small n = 100$</h4>
-<p>Podsumowując powyższe wyniki można dojść do wniosku, że nasze testy nie są bardzo czułe na zmianę próby analizując prawdopodobieństwo pokrycia. Choć zachodzą nieznaczne poprawy przy wzroście próby dla wszystkich rozkładów przy estymowaniu średniej. W przypadku wariancji, tylko przy rozkładach normalnych można zauważyć poprawę, co nie jest zaskakujące, gdyż problem słabego pokrycia wariancji w pozostałych rozkładach, nie wynikał z rozmiaru próby. Warto też zwrócić uwagę, że wraz ze wzrostem próby przedziały ufności znacznie zmieniejszały swoje długości.</p>
+```{r ex10data100, echo = TRUE, warning = FALSE, tidy = TRUE}
+ex10_data <- freq_gen(real_means, norm_known_variance_int, trails_gen, sd, trial_size = 100)[1:9]
+proporiton_int <- function(p, alpha = 0.05, n = 10000) {
+  z <- qnorm(1 - alpha/2)
+  return(c(p - z*sqrt(p*(1-p)/n), p + z*sqrt(p*(1-p)/n)))
+}
+```
+<h4>Podpunkt (a)</h4>
+$$
+[`r proporiton_int(ex10_data[[1]][1])[1]` \ , \ `r proporiton_int(ex10_data[[1]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[2]][1])[1]` \ , \ `r proporiton_int(ex10_data[[2]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[3]][1])[1]` \ , \ `r proporiton_int(ex10_data[[3]][1])[2]`].
+$$
+<h4>Podpunkt (b)</h4>
+$$
+[`r proporiton_int(ex10_data[[4]][1])[1]` \ , \ `r proporiton_int(ex10_data[[4]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[5]][1])[1]` \ , \ `r proporiton_int(ex10_data[[5]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[6]][1])[1]` \ , \ `r proporiton_int(ex10_data[[6]][1])[2]`].
+$$
+<h4>Podpunkt (c)</h4>
+$$
+[`r proporiton_int(ex10_data[[7]][1])[1]` \ , \ `r proporiton_int(ex10_data[[7]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[8]][1])[1]` \ , \ `r proporiton_int(ex10_data[[8]][1])[2]`] \\
+[`r proporiton_int(ex10_data[[9]][1])[1]` \ , \ `r proporiton_int(ex10_data[[9]][1])[2]`].
+$$
+
+<p>Podsumowując wszystkie powyższe wyniki można dojść do wniosku, że nasze testy nie są bardzo czułe na zmianę próby analizując prawdopodobieństwo pokrycia. Choć zachodzą nieznaczne poprawy przy wzroście próby dla wszystkich rozkładów przy estymowaniu średniej. W przypadku wariancji, tylko przy rozkładach normalnych można zauważyć poprawę, co nie jest zaskakujące, gdyż problem słabego pokrycia wariancji w pozostałych rozkładach, nie wynikał z rozmiaru próby. Warto też zwrócić uwagę, że wraz ze wzrostem próby przedziały ufności znacznie zmieniejszały swoje długości. W zadaniu 10 warto zwrócić uwagę, że rozmiar próby nie miał znaczenia, gdyż wszystkie wyniki są równie analogiczne dla próby 20, 50 jak i 100 elementowej. Nie powinno to zaskakiwać, skoro przedziały ufności dla proporcji były wykonywane z wykorzystaniem próby 10 000 elmentowej dla wszystkich powyższych przypadków.</p>

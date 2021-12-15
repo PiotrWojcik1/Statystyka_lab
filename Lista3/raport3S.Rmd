@@ -57,7 +57,7 @@ freq_gen <- function(real_means, interval_gen, trials_gen, sd, trial_size = 50, 
 ```
 
 <h2>Zadanie 1</h2>
-<p>Załóżmy, że chcemy skonstruować przedział, do którego z prawdopodobieństwej $\small 1 - \alpha$ będzie należeć średnia $\small \mu$ z rozkładu normalnego $\small N(\mu, \sigma^2)$, gdzie $\small \sigma^2$ jest znane, mając do dyspozycji pewną próbę $\small X1, \ldots , X_n$ z tego rozkładu. Weźmy średnią $\small \overline{X}$ tej próby, wtedy jej rozkład jest postaci $\small N(\mu, \frac{\sigma^2}{n})$. Po ustandaryzowaniu dostajemy:</p>
+<p>Załóżmy, że chcemy skonstruować przedział, do którego z prawdopodobieństwem $\small 1 - \alpha$ będzie należeć średnia $\small \mu$ z rozkładu normalnego $\small N(\mu, \sigma^2)$, gdzie $\small \sigma^2$ jest znane, mając do dyspozycji pewną próbę $\small X_1, \ldots , X_n$ z tego rozkładu. Weźmy średnią $\small \overline{X}$ tej próby, wtedy jej rozkład jest postaci $\small N(\mu, \frac{\sigma^2}{n})$. Po ustandaryzowaniu dostajemy:</p>
 $$
 Z = \frac{\overline{X} - \mu}{\sigma / \sqrt{n}}.
 $$
@@ -114,14 +114,14 @@ table <- data.frame(column1, column2)
 row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
 ```
-<p>Wyniki jakie uzyskaliśmy są dość oczekiwane zważając na dobrany poziom istotności równy 95%. Jedyny rozkład który znacznie odbiega od teoretycznej wartości jest rozkład <em>Cauchy'ego</em>.Spowodowane jest to tym, że w odróżnieniu od pozostałych rozkładów, ten nie zbiega do standardowego normalnego z <em>Centalnego twierdzenia granicznego</em>. We wszystkich przypadkach możemy zaobserwować, że długości przedziałów rosną wraz ze wzrostem parametru $\small \sigma$, co nie powinno zaskakiwać, skoro wraz ze wzrostem tego parametru, wzrasta rozrzut danych w rozkładzie normalnym.</p>
+<p>Zważając na dobrany poziom istotności równy 95%, wyniki jakie uzyskaliśmy nie zaskakują. Jedyny rozkład który znacznie odbiega od teoretycznej wartości jest rozkład <em>Cauchy'ego</em>.Spowodowane jest to tym, że w odróżnieniu od pozostałych rozkładów, ten nie zbiega do standardowego normalnego z <em>Centralnego twierdzenia granicznego</em>. We wszystkich przypadkach możemy zaobserwować, że długości przedziałów rosną wraz ze wzrostem parametru $\small \sigma$, co nie powinno zaskakiwać, skoro wraz ze wzrostem tego parametru, wzrasta rozrzut danych w rozkładzie normalnym.</p>
 
 <h2>Zadanie 3</h2>
 <p>Powrócimy do poszukiwania przedziału ufności z zadania 1, ale bez założenia znajomości wariancji. Należałoby ją zastąpić w takim razie wariancją próbkową $\small s^2$. Biorąc:</p>
 $$
 T = \frac{\overline{X} - \mu}{s/\sqrt{n}},
 $$
-<p>dostajemy zmienną o rozkładzie studenta z $\small n - 1$ stopniami swobody. Oznacza to, że jedyna różnica w porównaniu z poprzednim zadaniem jest w doborze kwantyli $\small t_{\alpha/2}$ i $\small t_{1-\alpha/2}$ z rozkładu studenta z $\small n-1$ stopniami swobody, zamiast kwantyli z rozkładu normalnego. Ostatecznie więc, nasz przedział ufności jest postaci:</p>
+<p>dostajemy zmienną o rozkładzie studenta z $\small n - 1$ stopniami swobody. Oznacza to, że jedyna różnica w porównaniu z poprzednim zadaniem jest w doborze kwantyli $\small t_{\alpha/2}$ i $\small t_{1-\alpha/2}$ z rozkładu studenta z $\small n-1$ stopniami swobody zamiast kwantyli z rozkładu normalnego. Ostatecznie nasz przedział ufności jest postaci:</p>
 $$
 \overline{X} - t_{1- \alpha/2} \frac{\sigma}{\sqrt{n}} \leq \mu \leq \overline{X} + t_{1 - \alpha/2} \frac{\sigma}{\sqrt{n}}.
 $$
@@ -140,7 +140,7 @@ table <- data.frame(column1, column2)
 row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
 ```
-<p>Wyniki nie różnią się zacznie z wynikami uzskanymi w zadaniu drugim. Rozbieżności możemy jedynie zaobserwować przy rozkładzie Cauchy'ego. Prawdopodobieństwo pokrycia znacznie wzrosło, co jest spowodowane znacznym zwiększeniem długości przedziałów ufności. Takie rozbieżności są oczywiście spowodowane tym, że próbujemy liczyć próbkową wariancję rozkładu który nie posiada wariancji. Stąd nawet rozważanie takiego przedziału nie do końca ma sens.</p>
+<p>Wyniki nie różnią się zacznie z wynikami uzskanymi w zadaniu drugim. Rozbieżności możemy jedynie zaobserwować przy rozkładzie Cauchy'ego. Prawdopodobieństwo pokrycia znacznie wzrosło, co jest spowodowane znacznym zwiększeniem długości przedziałów ufności. Takie rozbieżności są oczywiście spowodowane tym, że próbujemy liczyć próbkową wariancję rozkładu, który nie posiada wariancji. Stąd nawet rozważanie takiego przedziału nie do końca ma sens.</p>
 
 <h2>Zadanie 5</h2>
 <p>W poniższym zadaniu skonstruujemy przedział ufności na poziomie istotności $\small 1- \alpha$ dla wariancji z rozkładu normalnego $\small N(\mu,\sigma^2)$, gdzie średnia $\small \mu$ jest znana. Nasze rozważania zacznijmy od wzięcia próby $\small X_1 , \ldots , X_n$ z tego rozkładu. Wtedy:</p>
@@ -154,7 +154,7 @@ $$
 <p>gdzie $\small \chi^2_{1 - \alpha/2}$ i $\small \chi^2_{\alpha/2}$ są kwantylami z rozkładu chi-kwadrat o $\small n - 1$ stopniach swobody.</p>
 
 <h2>Zadanie 6</h2>
-<p>W poniższym zadaniu powtórzymy eksperyment z zadania 2, ale będziemy konstruować przedziały ufności dla wariancji wyprowadzone w poprzednim zadaniu, a nie dla średniej. Wyniki zaprezentujemy w poniższej tabelce:</p>
+<p>W poniższym zadaniu powtórzymy eksperyment z zadania 2, ale będziemy konstruować przedziały ufności dla wariancji wyprowadzone w poprzednim zadaniu a nie dla średniej. Wyniki zaprezentujemy w poniższej tabelce:</p>
 ```{r ex6table, echo = FALSE, tidy = TRUE, warning = FALSE}
 norm_known_mean_int <- function(x, mean, conf_int = 0.05) {
   sigma2 <- mean((x-mean)^2)
@@ -170,10 +170,10 @@ table <- data.frame(column1, column2)
 row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
 ```
-<p>Jak widać, jedyne wyniki jakie są sensowne to dla rozkładu normalnego. Nie jest to zaskakujące, skoro konstrukacja naszego przedziału zakładała próbę z rozkładu normalnego. Nie mamy tutaj też zbieżności rozkładów z CTG, jak w poprzednich zadaniach.</p>
+<p>Jak widać, jedyne wyniki jakie są sensowne to dla rozkładu normalnego. Nie jest to zaskakujące, skoro konstrukacja naszego przedziału zakładała próbę z rozkładu normalnego. Nie mamy tutaj też zbieżności rozkładów z CTG jak w poprzednich zadaniach.</p>
 
 <h2>Zadanie 7</h2>
-<p>W poniższym zadaniu skonstruujemy analogiczny przedział ufności co do tego w zadaniu 5, ale bez znanej średniej $\small \mu$. Zmienna $\small S^2$ ma rozkład</p>
+<p>W poniższym zadaniu skonstruujemy analogiczny przedział ufności do tego z zadania 5 ale bez znanej średniej $\small \mu$. Zmienna $\small S^2$ ma rozkład</p>
 $$
 \frac{\sigma^2}{n-1}\chi^2,
 $$
@@ -200,14 +200,14 @@ table <- data.frame(column1, column2)
 row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
 ```
-<p>Wyniki oczywiście są analogiczne do tych jakie uzyskaliśmy w zadaniu 6, ponieważ konstrukcja wykorzystana tutaj, korzysta z tego samego faktu co w konstrukcji z zadania 6.</p>
+<p>Wyniki oczywiście są analogiczne do tych jakie uzyskaliśmy w zadaniu 6, ponieważ konstrukcja wykorzystana tutaj jest analogiczna do tej z zadania 6.</p>
 
 <h2>Zadanie 9</h2>
-<p>Weźmy próbę $\small X_1 , \ldots X_n$ z rozkładu $\small b(p, 1)$. Wtedy $\small \hat{p} = 1/n\sum_{i = 1}^n{X_i}$ posiada wartość oczekiwaną $\small E[\hat{p}] = p$ oraz wariancję $\small Var(\hat{p}) = \frac{p(1-p)}{n}$. Korzystając z <em>centralnego twierdzenia granicznego</em> dostajemy, że statystyka:</p>
+<p>Weźmy próbę $\small X_1 , \ldots X_n$ z rozkładu $\small b(p, 1)$. Wtedy $\small \hat{p} = 1/n\sum_{i = 1}^n{X_i}$ posiada wartość oczekiwaną $\small E[\hat{p}] = p$ oraz wariancję $\small Var(\hat{p}) = \frac{p(1-p)}{n}$. Korzystając z <em>Centralnego twierdzenia granicznego</em> dostajemy, że statystyka:</p>
 $$
 \frac{\hat{p} - p}{\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}}
 $$
-<p>ma w przybliżeniu rozkład normalny dla dużych $\small n$(asymptotycznie normalny rozkład). Stąd już możemy wyprowadzić asymptotyczny przedział ufności dla proporcji $\small p$ na poziomie ufności $\small \alpha - 1$ postaci:</p>
+<p>ma w przybliżeniu rozkład normalny dla dużych $\small n$ (asymptotycznie normalny rozkład). Stąd już możemy wyprowadzić asymptotyczny przedział ufności dla proporcji $\small p$ na poziomie ufności $\small1 - \alpha$ postaci:</p>
 $$
 \left[ \hat{p} - z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \ , \ \hat{p} + z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\right].
 $$
@@ -215,7 +215,7 @@ $$
 
 <h2>Zadanie 10</h2>
 <p>W poniższym zadaniu powtórzymy zadanie 2 dla podpunktów (a), (b) oraz (c). Następnie wykorzystamy wyznaczone prawdopodobieństwo pokrycia jako frakcję $\small \hat{p}$ z poprzedniego zadania, w celu wyprowadzenia przedziału ufności dla proporcji na poziomie ufności $\small 1 - \alpha = 0.95$.</p>
-```{r ex10data, echo = TRUE, warning = FALSE, tidy = TRUE}
+```{r ex10data, echo = FALSE, warning = FALSE, tidy = TRUE}
 ex10_data <- freq_gen(real_means, norm_known_variance_int, trails_gen, sd)[1:9]
 proporiton_int <- function(p, alpha = 0.05, n = 10000) {
   z <- qnorm(1 - alpha/2)
@@ -229,7 +229,7 @@ $$
 [`r proporiton_int(ex10_data[[2]][1])[1]` \ , \ `r proporiton_int(ex10_data[[2]][1])[2]`] \\
 [`r proporiton_int(ex10_data[[3]][1])[1]` \ , \ `r proporiton_int(ex10_data[[3]][1])[2]`].
 $$
-<p>Jak mogliśmy się spodziewać, nasze przedziały są skoncentorwane blisko $\small 0.95$, ponieważ wszystkie testy jakie wykonywaliśmy w zadaniu 2 były na poziomie ufność $0.95$. Są one bardzo wąskie, ale widać, że każdy kolejny jest szerszy od poprzedniego, ponieważ dla kolejnych rozkładów wariancja była większa.</p>
+<p>Jak mogliśmy się spodziewać, nasze przedziały są skoncentorwane blisko $\small 0.95$, ponieważ wszystkie testy jakie wykonywaliśmy w zadaniu 2 były na poziomie ufności $0.95$. Są one bardzo wąskie ale widać, że każdy kolejny jest szerszy od poprzedniego, ponieważ dla kolejnych rozkładów wariancja była większa.</p>
 
 <h4>Podpunkt (b)</h4>
 <p>W poniższym przypadku mamy do czynienia z rozkładami logistycznymi. Poniżej zaprezentujemy wszystkie 3 przedziały ufności dla proporcji, dla wszystkich trzech rozkładów w kolejności występowania jak w zadaniu 2:</p>
@@ -238,7 +238,7 @@ $$
 [`r proporiton_int(ex10_data[[5]][1])[1]` \ , \ `r proporiton_int(ex10_data[[5]][1])[2]`] \\
 [`r proporiton_int(ex10_data[[6]][1])[1]` \ , \ `r proporiton_int(ex10_data[[6]][1])[2]`].
 $$
-<p>Jak w podpunkcie (a), nasze przedziały są skoncentorwane blisko $\small 0.95$, ponieważ wszystkie testy jakie wykonywaliśmy w zadaniu 2 były na poziomie ufność $0.95$. Są one bardzo wąskie, ale widać, że każdy kolejny jest szerszy od poprzedniego, ponieważ dla kolejnych rozkładów wariancja była większa.</p>
+<p>Jak w podpunkcie (a), nasze przedziały są skoncentorwane blisko $\small 0.95$, ponieważ wszystkie testy jakie wykonywaliśmy w zadaniu 2 były na poziomie ufności $0.95$. Są one bardzo wąskie ale widać, że każdy kolejny jest szerszy od poprzedniego, ponieważ dla kolejnych rozkładów wariancja była większa.</p>
 
 <h4>Podpunkt (c)</h4>
 <p>W poniższym przypadku mamy do czynienia z rozkładami Cauchy'ego. Poniżej zaprezentujemy wszystkie 3 przedziały ufności dla proporcji, dla wszystkich trzech rozkładów w kolejności występowania jak w zadaniu 2:</p>
@@ -247,7 +247,7 @@ $$
 [`r proporiton_int(ex10_data[[8]][1])[1]` \ , \ `r proporiton_int(ex10_data[[8]][1])[2]`] \\
 [`r proporiton_int(ex10_data[[9]][1])[1]` \ , \ `r proporiton_int(ex10_data[[9]][1])[2]`].
 $$
-<p>Powyższe przedziały zupełnie odbiegają od tych w podpunktach (a) i (b) czego się spodziewaliśmy, ponieważ już w samym zadaniu drugim uzyskaliśmy bezsensowne wyniki z powodu braku zbieżności "ustandaryzowanego" rozkładu Cauchy'ego do rozkładu standardowego normalnego.</p>
+<p>Powyższe przedziały zupełnie odbiegają od tych w podpunktach (a) i (b), czego się spodziewaliśmy, ponieważ już w samym zadaniu drugim uzyskaliśmy bezsensowne wyniki z powodu braku zbieżności "ustandaryzowanego" rozkładu Cauchy'ego do rozkładu standardowego normalnego.</p>
 
 <h2>Zadanie 11</h2>
 <p>W poniższym zadaniu powtórzymy eksperymenty numeryczne z zadań 2, 4, 6, 8 i 10, ale dla prób o rozmiarze $\small n = 20$ i $\small n = 100$, w celu przeanalizowania jak zmiana rozmiaru próby wpływa na nasze wyniki.</p>
@@ -336,7 +336,7 @@ row.names(table) <- rows
 knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
 ```
 <h4>Eksperyment z zadania 10 dla $\small n = 20$</h4>
-```{r ex10data20, echo = TRUE, warning = FALSE, tidy = TRUE}
+```{r ex10data20, echo = FALSE, warning = FALSE, tidy = TRUE}
 ex10_data <- freq_gen(real_means, norm_known_variance_int, trails_gen, sd, trial_size = 20)[1:9]
 proporiton_int <- function(p, alpha = 0.05, n = 10000) {
   z <- qnorm(1 - alpha/2)
@@ -364,7 +364,7 @@ $$
 
 
 <h4>Eksperyment z zadania 10 dla $\small n = 100$</h4>
-```{r ex10data100, echo = TRUE, warning = FALSE, tidy = TRUE}
+```{r ex10data100, echo = FALSE, warning = FALSE, tidy = TRUE}
 ex10_data <- freq_gen(real_means, norm_known_variance_int, trails_gen, sd, trial_size = 100)[1:9]
 proporiton_int <- function(p, alpha = 0.05, n = 10000) {
   z <- qnorm(1 - alpha/2)
@@ -390,4 +390,4 @@ $$
 [`r proporiton_int(ex10_data[[9]][1])[1]` \ , \ `r proporiton_int(ex10_data[[9]][1])[2]`].
 $$
 
-<p>Podsumowując wszystkie powyższe wyniki można dojść do wniosku, że nasze testy nie są bardzo czułe na zmianę próby analizując prawdopodobieństwo pokrycia. Choć zachodzą nieznaczne poprawy przy wzroście próby dla wszystkich rozkładów przy estymowaniu średniej. W przypadku wariancji, tylko przy rozkładach normalnych można zauważyć poprawę, co nie jest zaskakujące, gdyż problem słabego pokrycia wariancji w pozostałych rozkładach, nie wynikał z rozmiaru próby. Warto też zwrócić uwagę, że wraz ze wzrostem próby przedziały ufności znacznie zmieniejszały swoje długości. W zadaniu 10 warto zwrócić uwagę, że rozmiar próby nie miał znaczenia, gdyż wszystkie wyniki są równie analogiczne dla próby 20, 50 jak i 100 elementowej. Nie powinno to zaskakiwać, skoro przedziały ufności dla proporcji były wykonywane z wykorzystaniem próby 10 000 elmentowej dla wszystkich powyższych przypadków.</p>
+<p>Podsumowując wszystkie powyższe wyniki, można dojść do wniosku, że nasze testy nie są bardzo czułe na zmianę próby, analizując prawdopodobieństwo pokrycia. Choć zachodzą nieznaczne poprawy przy wzroście próby dla wszystkich rozkładów przy estymowaniu średniej. W przypadku wariancji, tylko przy rozkładach normalnych można zauważyć poprawę, co nie jest zaskakujące, gdyż problem słabego pokrycia wariancji w pozostałych rozkładach nie wynikał z rozmiaru próby. Warto też zwrócić uwagę na to, że wraz ze wzrostem próby przedziały ufności znacznie zmniejszały swoje długości. W zadaniu 10 warto zwrócić uwagę na to, że rozmiar próby nie miał znaczenia, gdyż wszystkie wyniki są równie analogiczne dla próby 20, 50 jak i 100 elementowej. Nie powinno to zaskakiwać, skoro przedziały ufności dla proporcji były wykonywane z wykorzystaniem próby 10 000 elmentowej dla wszystkich powyższych przypadków.</p>

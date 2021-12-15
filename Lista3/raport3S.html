@@ -175,7 +175,7 @@ pre code {
 Zadanie 1
 </h2>
 <p>
-Załóżmy, że chcemy skonstruować przedział, do którego z prawdopodobieństwej <span class="math inline">\(\small 1 - \alpha\)</span> będzie należeć średnia <span class="math inline">\(\small \mu\)</span> z rozkładu normalnego <span class="math inline">\(\small N(\mu, \sigma^2)\)</span>, gdzie <span class="math inline">\(\small \sigma^2\)</span> jest znane, mając do dyspozycji pewną próbę <span class="math inline">\(\small X1, \ldots , X_n\)</span> z tego rozkładu. Weźmy średnią <span class="math inline">\(\small \overline{X}\)</span> tej próby, wtedy jej rozkład jest postaci <span class="math inline">\(\small N(\mu, \frac{\sigma^2}{n})\)</span>. Po ustandaryzowaniu dostajemy:
+Załóżmy, że chcemy skonstruować przedział, do którego z prawdopodobieństwem <span class="math inline">\(\small 1 - \alpha\)</span> będzie należeć średnia <span class="math inline">\(\small \mu\)</span> z rozkładu normalnego <span class="math inline">\(\small N(\mu, \sigma^2)\)</span>, gdzie <span class="math inline">\(\small \sigma^2\)</span> jest znane, mając do dyspozycji pewną próbę <span class="math inline">\(\small X_1, \ldots , X_n\)</span> z tego rozkładu. Weźmy średnią <span class="math inline">\(\small \overline{X}\)</span> tej próby, wtedy jej rozkład jest postaci <span class="math inline">\(\small N(\mu, \frac{\sigma^2}{n})\)</span>. Po ustandaryzowaniu dostajemy:
 </p>
 <p><span class="math display">\[
 Z = \frac{\overline{X} - \mu}{\sigma / \sqrt{n}}.
@@ -277,83 +277,83 @@ Na ich podstawie wyznaczymy przedział ufności dla średniej z zadania 1 na poz
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9496</td>
+<td align="center">0.9544</td>
 <td align="center">0.5543615</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9537</td>
+<td align="center">0.9482</td>
 <td align="center">1.1087231</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9524</td>
+<td align="center">0.9511</td>
 <td align="center">1.6630846</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.9507</td>
+<td align="center">0.9541</td>
 <td align="center">1.0055006</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.9484</td>
+<td align="center">0.9520</td>
 <td align="center">2.0110012</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.9493</td>
+<td align="center">0.9488</td>
 <td align="center">3.0165018</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
-<td align="center">0.1678</td>
+<td align="center">0.1682</td>
 <td align="center">0.5543615</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
-<td align="center">0.1749</td>
+<td align="center">0.1628</td>
 <td align="center">1.1087231</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
-<td align="center">0.1687</td>
+<td align="center">0.1686</td>
 <td align="center">1.6630846</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.9542</td>
+<td align="center">0.9492</td>
 <td align="center">0.5543615</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.9544</td>
+<td align="center">0.9488</td>
 <td align="center">1.1087231</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.9534</td>
+<td align="center">0.9529</td>
 <td align="center">1.6630846</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.9532</td>
+<td align="center">0.9540</td>
 <td align="center">0.7839856</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.9499</td>
+<td align="center">0.9512</td>
 <td align="center">1.1087231</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.9522</td>
+<td align="center">0.9530</td>
 <td align="center">1.3579029</td>
 </tr>
 </tbody>
 </table>
 <p>
-Wyniki jakie uzyskaliśmy są dość oczekiwane zważając na dobrany poziom istotności równy 95%. Jedyny rozkład który znacznie odbiega od teoretycznej wartości jest rozkład <em>Cauchy’ego</em>.Spowodowane jest to tym, że w odróżnieniu od pozostałych rozkładów, ten nie zbiega do standardowego normalnego z <em>Centalnego twierdzenia granicznego</em>. We wszystkich przypadkach możemy zaobserwować, że długości przedziałów rosną wraz ze wzrostem parametru <span class="math inline">\(\small \sigma\)</span>, co nie powinno zaskakiwać, skoro wraz ze wzrostem tego parametru, wzrasta rozrzut danych w rozkładzie normalnym.
+Zważając na dobrany poziom istotności równy 95%, wyniki jakie uzyskaliśmy nie zaskakują. Jedyny rozkład który znacznie odbiega od teoretycznej wartości jest rozkład <em>Cauchy’ego</em>.Spowodowane jest to tym, że w odróżnieniu od pozostałych rozkładów, ten nie zbiega do standardowego normalnego z <em>Centralnego twierdzenia granicznego</em>. We wszystkich przypadkach możemy zaobserwować, że długości przedziałów rosną wraz ze wzrostem parametru <span class="math inline">\(\small \sigma\)</span>, co nie powinno zaskakiwać, skoro wraz ze wzrostem tego parametru, wzrasta rozrzut danych w rozkładzie normalnym.
 </p>
 <h2>
 Zadanie 3
@@ -365,7 +365,7 @@ Powrócimy do poszukiwania przedziału ufności z zadania 1, ale bez założenia
 T = \frac{\overline{X} - \mu}{s/\sqrt{n}},
 \]</span>
 <p>
-dostajemy zmienną o rozkładzie studenta z <span class="math inline">\(\small n - 1\)</span> stopniami swobody. Oznacza to, że jedyna różnica w porównaniu z poprzednim zadaniem jest w doborze kwantyli <span class="math inline">\(\small t_{\alpha/2}\)</span> i <span class="math inline">\(\small t_{1-\alpha/2}\)</span> z rozkładu studenta z <span class="math inline">\(\small n-1\)</span> stopniami swobody, zamiast kwantyli z rozkładu normalnego. Ostatecznie więc, nasz przedział ufności jest postaci:
+dostajemy zmienną o rozkładzie studenta z <span class="math inline">\(\small n - 1\)</span> stopniami swobody. Oznacza to, że jedyna różnica w porównaniu z poprzednim zadaniem jest w doborze kwantyli <span class="math inline">\(\small t_{\alpha/2}\)</span> i <span class="math inline">\(\small t_{1-\alpha/2}\)</span> z rozkładu studenta z <span class="math inline">\(\small n-1\)</span> stopniami swobody zamiast kwantyli z rozkładu normalnego. Ostatecznie nasz przedział ufności jest postaci:
 </p>
 <p><span class="math display">\[
 \overline{X} - t_{1- \alpha/2} \frac{\sigma}{\sqrt{n}} \leq \mu \leq \overline{X} + t_{1 - \alpha/2} \frac{\sigma}{\sqrt{n}}.
@@ -387,83 +387,83 @@ W poniższym zadaniu powtórzymy eksperyment z zadania 2, ale wykorzystując prz
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9531</td>
-<td align="center">0.5656694</td>
+<td align="center">0.9469</td>
+<td align="center">0.5652669</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9483</td>
-<td align="center">1.1324209</td>
+<td align="center">0.9493</td>
+<td align="center">1.1287713</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9510</td>
-<td align="center">1.6973913</td>
+<td align="center">0.9508</td>
+<td align="center">1.6985139</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.9523</td>
-<td align="center">1.0238608</td>
+<td align="center">0.9504</td>
+<td align="center">1.0235283</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.9507</td>
-<td align="center">2.0421845</td>
+<td align="center">0.9461</td>
+<td align="center">2.0449569</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.9483</td>
-<td align="center">3.0657495</td>
+<td align="center">0.9510</td>
+<td align="center">3.0688513</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
-<td align="center">0.9803</td>
-<td align="center">26.0538934</td>
+<td align="center">0.9798</td>
+<td align="center">24.3338184</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
-<td align="center">0.9802</td>
-<td align="center">47.3980794</td>
+<td align="center">0.9793</td>
+<td align="center">46.3770071</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
-<td align="center">0.9817</td>
-<td align="center">91.9399204</td>
+<td align="center">0.9794</td>
+<td align="center">69.7612399</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
 <td align="center">0.9352</td>
-<td align="center">0.5594336</td>
+<td align="center">0.5562391</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.9377</td>
-<td align="center">1.1140998</td>
+<td align="center">0.9330</td>
+<td align="center">1.1118897</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.9297</td>
-<td align="center">1.6762429</td>
+<td align="center">0.9376</td>
+<td align="center">1.6737946</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.9232</td>
-<td align="center">0.7795868</td>
+<td align="center">0.9191</td>
+<td align="center">0.7812604</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.9381</td>
-<td align="center">1.1179070</td>
+<td align="center">0.9348</td>
+<td align="center">1.1137445</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.9392</td>
-<td align="center">1.3747507</td>
+<td align="center">0.9388</td>
+<td align="center">1.3727161</td>
 </tr>
 </tbody>
 </table>
 <p>
-Wyniki nie różnią się zacznie z wynikami uzskanymi w zadaniu drugim. Rozbieżności możemy jedynie zaobserwować przy rozkładzie Cauchy’ego. Prawdopodobieństwo pokrycia znacznie wzrosło, co jest spowodowane znacznym zwiększeniem długości przedziałów ufności. Takie rozbieżności są oczywiście spowodowane tym, że próbujemy liczyć próbkową wariancję rozkładu który nie posiada wariancji. Stąd nawet rozważanie takiego przedziału nie do końca ma sens.
+Wyniki nie różnią się zacznie z wynikami uzskanymi w zadaniu drugim. Rozbieżności możemy jedynie zaobserwować przy rozkładzie Cauchy’ego. Prawdopodobieństwo pokrycia znacznie wzrosło, co jest spowodowane znacznym zwiększeniem długości przedziałów ufności. Takie rozbieżności są oczywiście spowodowane tym, że próbujemy liczyć próbkową wariancję rozkładu, który nie posiada wariancji. Stąd nawet rozważanie takiego przedziału nie do końca ma sens.
 </p>
 <h2>
 Zadanie 5
@@ -487,7 +487,7 @@ gdzie <span class="math inline">\(\small \chi^2_{1 - \alpha/2}\)</span> i <span 
 Zadanie 6
 </h2>
 <p>
-W poniższym zadaniu powtórzymy eksperyment z zadania 2, ale będziemy konstruować przedziały ufności dla wariancji wyprowadzone w poprzednim zadaniu, a nie dla średniej. Wyniki zaprezentujemy w poniższej tabelce:
+W poniższym zadaniu powtórzymy eksperyment z zadania 2, ale będziemy konstruować przedziały ufności dla wariancji wyprowadzone w poprzednim zadaniu a nie dla średniej. Wyniki zaprezentujemy w poniższej tabelce:
 </p>
 <table>
 <thead>
@@ -500,89 +500,89 @@ W poniższym zadaniu powtórzymy eksperyment z zadania 2, ale będziemy konstruo
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9491</td>
-<td align="center">0.8721159</td>
+<td align="center">0.9474</td>
+<td align="center">0.8717241</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9474</td>
-<td align="center">3.5024342</td>
+<td align="center">0.9491</td>
+<td align="center">3.4832063</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9509</td>
-<td align="center">7.8491769</td>
+<td align="center">0.9503</td>
+<td align="center">7.8439572</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.8875</td>
-<td align="center">2.8667031</td>
+<td align="center">0.8870</td>
+<td align="center">2.8649686</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.8816</td>
-<td align="center">11.5216628</td>
+<td align="center">0.8871</td>
+<td align="center">11.4480890</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.8844</td>
-<td align="center">25.7360460</td>
+<td align="center">0.8869</td>
+<td align="center">25.8469815</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
-<td align="center">0.0000</td>
-<td align="center">169622.6567828</td>
+<td align="center">0.0001</td>
+<td align="center">416182.9920962</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
 <td align="center">0.0000</td>
-<td align="center">210578062.0559180</td>
+<td align="center">134473663.7485445</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
-<td align="center">0.0001</td>
-<td align="center">1100696.9964853</td>
+<td align="center">0.0000</td>
+<td align="center">2969004.6457774</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.7064</td>
-<td align="center">0.8791794</td>
+<td align="center">0.7161</td>
+<td align="center">0.8748133</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.7159</td>
-<td align="center">3.4937281</td>
+<td align="center">0.7119</td>
+<td align="center">3.4730129</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.7030</td>
-<td align="center">7.8528459</td>
+<td align="center">0.7202</td>
+<td align="center">7.8203318</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.5725</td>
-<td align="center">1.7484809</td>
+<td align="center">0.5773</td>
+<td align="center">1.7454163</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.7163</td>
-<td align="center">3.5075231</td>
+<td align="center">0.7130</td>
+<td align="center">3.4988674</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.7845</td>
-<td align="center">5.2399928</td>
+<td align="center">0.7786</td>
+<td align="center">5.2124414</td>
 </tr>
 </tbody>
 </table>
 <p>
-Jak widać, jedyne wyniki jakie są sensowne to dla rozkładu normalnego. Nie jest to zaskakujące, skoro konstrukacja naszego przedziału zakładała próbę z rozkładu normalnego. Nie mamy tutaj też zbieżności rozkładów z CTG, jak w poprzednich zadaniach.
+Jak widać, jedyne wyniki jakie są sensowne to dla rozkładu normalnego. Nie jest to zaskakujące, skoro konstrukacja naszego przedziału zakładała próbę z rozkładu normalnego. Nie mamy tutaj też zbieżności rozkładów z CTG jak w poprzednich zadaniach.
 </p>
 <h2>
 Zadanie 7
 </h2>
 <p>
-W poniższym zadaniu skonstruujemy analogiczny przedział ufności co do tego w zadaniu 5, ale bez znanej średniej <span class="math inline">\(\small \mu\)</span>. Zmienna <span class="math inline">\(\small S^2\)</span> ma rozkład
+W poniższym zadaniu skonstruujemy analogiczny przedział ufności do tego z zadania 5 ale bez znanej średniej <span class="math inline">\(\small \mu\)</span>. Zmienna <span class="math inline">\(\small S^2\)</span> ma rozkład
 </p>
 <span class="math display">\[
 \frac{\sigma^2}{n-1}\chi^2,
@@ -613,95 +613,95 @@ W poniższym zadaniu skonstruujemy przedziały ufności analogiczne do tych z za
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9460</td>
-<td align="center">0.8745624</td>
+<td align="center">0.9518</td>
+<td align="center">0.8728305</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9470</td>
-<td align="center">3.4920104</td>
+<td align="center">0.9533</td>
+<td align="center">3.4870583</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9505</td>
-<td align="center">7.8599699</td>
+<td align="center">0.9484</td>
+<td align="center">7.8806399</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.8849</td>
-<td align="center">2.8655569</td>
+<td align="center">0.8857</td>
+<td align="center">2.8738301</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.8847</td>
-<td align="center">11.4938360</td>
+<td align="center">0.8850</td>
+<td align="center">11.5075865</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.8958</td>
-<td align="center">25.8404817</td>
+<td align="center">0.8841</td>
+<td align="center">25.8231528</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
-<td align="center">0.0000</td>
-<td align="center">102894.0305130</td>
+<td align="center">0.0001</td>
+<td align="center">238273.8068391</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
 <td align="center">0.0000</td>
-<td align="center">1600793.7954874</td>
+<td align="center">529637.2219058</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
 <td align="center">0.0000</td>
-<td align="center">3586893.2832524</td>
+<td align="center">1313705.1151406</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.7135</td>
-<td align="center">0.8743950</td>
+<td align="center">0.7071</td>
+<td align="center">0.8655944</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.7208</td>
-<td align="center">3.5042287</td>
+<td align="center">0.7146</td>
+<td align="center">3.4953395</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.7070</td>
-<td align="center">7.9013583</td>
+<td align="center">0.7191</td>
+<td align="center">7.8161345</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.5756</td>
-<td align="center">1.7599445</td>
+<td align="center">0.5782</td>
+<td align="center">1.7455930</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.7166</td>
-<td align="center">3.4795526</td>
+<td align="center">0.7168</td>
+<td align="center">3.4778800</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
 <td align="center">0.7774</td>
-<td align="center">5.2648078</td>
+<td align="center">5.2534995</td>
 </tr>
 </tbody>
 </table>
 <p>
-Wyniki oczywiście są analogiczne do tych jakie uzyskaliśmy w zadaniu 6, ponieważ konstrukcja wykorzystana tutaj, korzysta z tego samego faktu co w konstrukcji z zadania 6.
+Wyniki oczywiście są analogiczne do tych jakie uzyskaliśmy w zadaniu 6, ponieważ konstrukcja wykorzystana tutaj jest analogiczna do tej z zadania 6.
 </p>
 <h2>
 Zadanie 9
 </h2>
 <p>
-Weźmy próbę <span class="math inline">\(\small X_1 , \ldots X_n\)</span> z rozkładu <span class="math inline">\(\small b(p, 1)\)</span>. Wtedy <span class="math inline">\(\small \hat{p} = 1/n\sum_{i = 1}^n{X_i}\)</span> posiada wartość oczekiwaną <span class="math inline">\(\small E[\hat{p}] = p\)</span> oraz wariancję <span class="math inline">\(\small Var(\hat{p}) = \frac{p(1-p)}{n}\)</span>. Korzystając z <em>centralnego twierdzenia granicznego</em> dostajemy, że statystyka:
+Weźmy próbę <span class="math inline">\(\small X_1 , \ldots X_n\)</span> z rozkładu <span class="math inline">\(\small b(p, 1)\)</span>. Wtedy <span class="math inline">\(\small \hat{p} = 1/n\sum_{i = 1}^n{X_i}\)</span> posiada wartość oczekiwaną <span class="math inline">\(\small E[\hat{p}] = p\)</span> oraz wariancję <span class="math inline">\(\small Var(\hat{p}) = \frac{p(1-p)}{n}\)</span>. Korzystając z <em>Centralnego twierdzenia granicznego</em> dostajemy, że statystyka:
 </p>
 <span class="math display">\[
 \frac{\hat{p} - p}{\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}}
 \]</span>
 <p>
-ma w przybliżeniu rozkład normalny dla dużych <span class="math inline">\(\small n\)</span>(asymptotycznie normalny rozkład). Stąd już możemy wyprowadzić asymptotyczny przedział ufności dla proporcji <span class="math inline">\(\small p\)</span> na poziomie ufności <span class="math inline">\(\small \alpha - 1\)</span> postaci:
+ma w przybliżeniu rozkład normalny dla dużych <span class="math inline">\(\small n\)</span> (asymptotycznie normalny rozkład). Stąd już możemy wyprowadzić asymptotyczny przedział ufności dla proporcji <span class="math inline">\(\small p\)</span> na poziomie ufności <span class="math inline">\(\small1 - \alpha\)</span> postaci:
 </p>
 <span class="math display">\[
 \left[ \hat{p} - z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \ , \ \hat{p} + z_{1 - \alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\right].
@@ -715,11 +715,6 @@ Zadanie 10
 <p>
 W poniższym zadaniu powtórzymy zadanie 2 dla podpunktów (a), (b) oraz (c). Następnie wykorzystamy wyznaczone prawdopodobieństwo pokrycia jako frakcję <span class="math inline">\(\small \hat{p}\)</span> z poprzedniego zadania, w celu wyprowadzenia przedziału ufności dla proporcji na poziomie ufności <span class="math inline">\(\small 1 - \alpha = 0.95\)</span>.
 </p>
-<pre class="r"><code>ex10_data &lt;- freq_gen(real_means, norm_known_variance_int, trails_gen, sd)[1:9]
-proporiton_int &lt;- function(p, alpha = 0.05, n = 10000) {
-    z &lt;- qnorm(1 - alpha/2)
-    return(c(p - z * sqrt(p * (1 - p)/n), p + z * sqrt(p * (1 - p)/n)))
-}</code></pre>
 <h4>
 Podpunkt (a)
 </h4>
@@ -727,12 +722,12 @@ Podpunkt (a)
 W poniższym przypadku mamy do czynienia z rozkładami normalnymi. Poniżej zaprezentujemy wszystkie 3 przedziały ufności dla proporcji, dla wszystkich trzech rozkładów w kolejności występowania jak w zadaniu 2:
 </p>
 <span class="math display">\[
-[0.9424012 \ , \ 0.9511988] \\
-[0.9441682 \ , \ 0.9528318] \\
-[0.9473937 \ , \ 0.9558063].
+[0.9452082 \ , \ 0.9537918] \\
+[0.9440642 \ , \ 0.9527358] \\
+[0.946665 \ , \ 0.955135].
 \]</span>
 <p>
-Jak mogliśmy się spodziewać, nasze przedziały są skoncentorwane blisko <span class="math inline">\(\small 0.95\)</span>, ponieważ wszystkie testy jakie wykonywaliśmy w zadaniu 2 były na poziomie ufność <span class="math inline">\(0.95\)</span>. Są one bardzo wąskie, ale widać, że każdy kolejny jest szerszy od poprzedniego, ponieważ dla kolejnych rozkładów wariancja była większa.
+Jak mogliśmy się spodziewać, nasze przedziały są skoncentorwane blisko <span class="math inline">\(\small 0.95\)</span>, ponieważ wszystkie testy jakie wykonywaliśmy w zadaniu 2 były na poziomie ufności <span class="math inline">\(0.95\)</span>. Są one bardzo wąskie ale widać, że każdy kolejny jest szerszy od poprzedniego, ponieważ dla kolejnych rozkładów wariancja była większa.
 </p>
 <h4>
 Podpunkt (b)
@@ -741,12 +736,12 @@ Podpunkt (b)
 W poniższym przypadku mamy do czynienia z rozkładami logistycznymi. Poniżej zaprezentujemy wszystkie 3 przedziały ufności dla proporcji, dla wszystkich trzech rozkładów w kolejności występowania jak w zadaniu 2:
 </p>
 <span class="math display">\[
-[0.9478103 \ , \ 0.9561897] \\
-[0.9515628 \ , \ 0.9596372] \\
-[0.9435444 \ , \ 0.9522556].
+[0.9490604 \ , \ 0.9573396] \\
+[0.9457284 \ , \ 0.9542716] \\
+[0.9486436 \ , \ 0.9569564].
 \]</span>
 <p>
-Jak w podpunkcie (a), nasze przedziały są skoncentorwane blisko <span class="math inline">\(\small 0.95\)</span>, ponieważ wszystkie testy jakie wykonywaliśmy w zadaniu 2 były na poziomie ufność <span class="math inline">\(0.95\)</span>. Są one bardzo wąskie, ale widać, że każdy kolejny jest szerszy od poprzedniego, ponieważ dla kolejnych rozkładów wariancja była większa.
+Jak w podpunkcie (a), nasze przedziały są skoncentorwane blisko <span class="math inline">\(\small 0.95\)</span>, ponieważ wszystkie testy jakie wykonywaliśmy w zadaniu 2 były na poziomie ufności <span class="math inline">\(0.95\)</span>. Są one bardzo wąskie ale widać, że każdy kolejny jest szerszy od poprzedniego, ponieważ dla kolejnych rozkładów wariancja była większa.
 </p>
 <h4>
 Podpunkt (c)
@@ -755,12 +750,12 @@ Podpunkt (c)
 W poniższym przypadku mamy do czynienia z rozkładami Cauchy’ego. Poniżej zaprezentujemy wszystkie 3 przedziały ufności dla proporcji, dla wszystkich trzech rozkładów w kolejności występowania jak w zadaniu 2:
 </p>
 <span class="math display">\[
-[0.1632274 \ , \ 0.1779726] \\
-[0.1606724 \ , \ 0.1753276] \\
-[0.1676511 \ , \ 0.1825489].
+[0.1657831 \ , \ 0.1806169] \\
+[0.1631291 \ , \ 0.1778709] \\
+[0.1668645 \ , \ 0.1817355].
 \]</span>
 <p>
-Powyższe przedziały zupełnie odbiegają od tych w podpunktach (a) i (b) czego się spodziewaliśmy, ponieważ już w samym zadaniu drugim uzyskaliśmy bezsensowne wyniki z powodu braku zbieżności “ustandaryzowanego” rozkładu Cauchy’ego do rozkładu standardowego normalnego.
+Powyższe przedziały zupełnie odbiegają od tych w podpunktach (a) i (b), czego się spodziewaliśmy, ponieważ już w samym zadaniu drugim uzyskaliśmy bezsensowne wyniki z powodu braku zbieżności “ustandaryzowanego” rozkładu Cauchy’ego do rozkładu standardowego normalnego.
 </p>
 <h2>
 Zadanie 11
@@ -782,77 +777,77 @@ Eksperyment z zadania 2 dla <span class="math inline">\(\small n = 20\)</span>
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9464</td>
+<td align="center">0.9541</td>
 <td align="center">0.8765225</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9518</td>
+<td align="center">0.9535</td>
 <td align="center">1.7530451</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9471</td>
+<td align="center">0.9525</td>
 <td align="center">2.6295676</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.9498</td>
+<td align="center">0.9503</td>
 <td align="center">1.5898360</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.9522</td>
+<td align="center">0.9486</td>
 <td align="center">3.1796721</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.9487</td>
+<td align="center">0.9492</td>
 <td align="center">4.7695081</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
-<td align="center">0.2638</td>
+<td align="center">0.2686</td>
 <td align="center">0.8765225</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
-<td align="center">0.2635</td>
+<td align="center">0.2577</td>
 <td align="center">1.7530451</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
-<td align="center">0.2624</td>
+<td align="center">0.2691</td>
 <td align="center">2.6295676</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.9521</td>
+<td align="center">0.9525</td>
 <td align="center">0.8765225</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.9523</td>
+<td align="center">0.9528</td>
 <td align="center">1.7530451</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.9547</td>
+<td align="center">0.9561</td>
 <td align="center">2.6295676</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.9557</td>
+<td align="center">0.9545</td>
 <td align="center">1.2395901</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.9547</td>
+<td align="center">0.9575</td>
 <td align="center">1.7530451</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.9515</td>
+<td align="center">0.9522</td>
 <td align="center">2.1470330</td>
 </tr>
 </tbody>
@@ -871,77 +866,77 @@ Eksperyment z zadania 2 dla <span class="math inline">\(\small n = 100\)</span>
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9497</td>
+<td align="center">0.9463</td>
 <td align="center">0.3919928</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9487</td>
+<td align="center">0.9519</td>
 <td align="center">0.7839856</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9527</td>
+<td align="center">0.9463</td>
 <td align="center">1.1759784</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.9520</td>
+<td align="center">0.9482</td>
 <td align="center">0.7109963</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.9478</td>
+<td align="center">0.9523</td>
 <td align="center">1.4219926</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.9519</td>
+<td align="center">0.9535</td>
 <td align="center">2.1329889</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
-<td align="center">0.1210</td>
+<td align="center">0.1235</td>
 <td align="center">0.3919928</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
-<td align="center">0.1226</td>
+<td align="center">0.1244</td>
 <td align="center">0.7839856</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
-<td align="center">0.1250</td>
+<td align="center">0.1246</td>
 <td align="center">1.1759784</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.9487</td>
+<td align="center">0.9504</td>
 <td align="center">0.3919928</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.9495</td>
+<td align="center">0.9499</td>
 <td align="center">0.7839856</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.9495</td>
+<td align="center">0.9488</td>
 <td align="center">1.1759784</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.9515</td>
+<td align="center">0.9543</td>
 <td align="center">0.5543615</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.9507</td>
+<td align="center">0.9519</td>
 <td align="center">0.7839856</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.9496</td>
+<td align="center">0.9477</td>
 <td align="center">0.9601823</td>
 </tr>
 </tbody>
@@ -960,78 +955,78 @@ Eksperyment z zadania 4 dla <span class="math inline">\(\small n = 20\)</span>
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9523</td>
-<td align="center">0.9223093</td>
+<td align="center">0.9534</td>
+<td align="center">0.9255030</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9460</td>
-<td align="center">1.8464391</td>
+<td align="center">0.9551</td>
+<td align="center">1.8527538</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9515</td>
-<td align="center">2.7701571</td>
+<td align="center">0.9534</td>
+<td align="center">2.7728306</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.9529</td>
-<td align="center">1.6672411</td>
+<td align="center">0.9559</td>
+<td align="center">1.6610148</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.9513</td>
-<td align="center">3.3362987</td>
+<td align="center">0.9515</td>
+<td align="center">3.3378728</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.9545</td>
-<td align="center">4.9771231</td>
+<td align="center">0.9510</td>
+<td align="center">5.0006374</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
-<td align="center">0.9827</td>
-<td align="center">30.2886660</td>
+<td align="center">0.9781</td>
+<td align="center">25.6711947</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
-<td align="center">0.9803</td>
-<td align="center">51.1634555</td>
+<td align="center">0.9793</td>
+<td align="center">65.9548803</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
-<td align="center">0.9781</td>
-<td align="center">115.3082054</td>
+<td align="center">0.9801</td>
+<td align="center">141.5143569</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.9182</td>
-<td align="center">0.8998017</td>
+<td align="center">0.9159</td>
+<td align="center">0.8933686</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.9177</td>
-<td align="center">1.7866744</td>
+<td align="center">0.9147</td>
+<td align="center">1.7966905</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.9197</td>
-<td align="center">2.6936602</td>
+<td align="center">0.9203</td>
+<td align="center">2.6889340</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.8831</td>
-<td align="center">1.2332135</td>
+<td align="center">0.8997</td>
+<td align="center">1.2377972</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.9176</td>
-<td align="center">1.7868446</td>
+<td align="center">0.9208</td>
+<td align="center">1.7857390</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.9303</td>
-<td align="center">2.2209283</td>
+<td align="center">0.9301</td>
+<td align="center">2.2143845</td>
 </tr>
 </tbody>
 </table>
@@ -1049,78 +1044,78 @@ Eksperyment z zadania 4 dla <span class="math inline">\(\small n = 100\)</span>
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9492</td>
-<td align="center">0.3955417</td>
+<td align="center">0.9481</td>
+<td align="center">0.3960062</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9519</td>
-<td align="center">0.7916708</td>
+<td align="center">0.9474</td>
+<td align="center">0.7917442</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9545</td>
-<td align="center">1.1885637</td>
+<td align="center">0.9486</td>
+<td align="center">1.1879149</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.9485</td>
-<td align="center">0.7169141</td>
+<td align="center">0.9458</td>
+<td align="center">0.7162383</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.9514</td>
-<td align="center">1.4365422</td>
+<td align="center">0.9503</td>
+<td align="center">1.4316174</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.9508</td>
-<td align="center">2.1525248</td>
+<td align="center">0.9507</td>
+<td align="center">2.1526742</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
-<td align="center">0.9785</td>
-<td align="center">46.5684401</td>
+<td align="center">0.9803</td>
+<td align="center">24.4508872</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
-<td align="center">0.9801</td>
-<td align="center">196.5919008</td>
+<td align="center">0.9795</td>
+<td align="center">346.2000079</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
-<td align="center">0.9802</td>
-<td align="center">223.1011565</td>
+<td align="center">0.9813</td>
+<td align="center">74.0068252</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.9431</td>
-<td align="center">0.3935363</td>
+<td align="center">0.9421</td>
+<td align="center">0.3922334</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.9450</td>
-<td align="center">0.7856244</td>
+<td align="center">0.9400</td>
+<td align="center">0.7870111</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.9404</td>
-<td align="center">1.1797370</td>
+<td align="center">0.9441</td>
+<td align="center">1.1785972</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.9342</td>
-<td align="center">0.5514251</td>
+<td align="center">0.9351</td>
+<td align="center">0.5512976</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.9421</td>
-<td align="center">0.7867549</td>
+<td align="center">0.9419</td>
+<td align="center">0.7858743</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.9432</td>
-<td align="center">0.9622261</td>
+<td align="center">0.9456</td>
+<td align="center">0.9672518</td>
 </tr>
 </tbody>
 </table>
@@ -1138,78 +1133,78 @@ Eksperyment z zadania 6 dla <span class="math inline">\(\small n = 20\)</span>
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9495</td>
-<td align="center">1.636886</td>
+<td align="center">0.9493</td>
+<td align="center">1.640103</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9481</td>
-<td align="center">6.523780</td>
+<td align="center">0.9531</td>
+<td align="center">6.541930</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9525</td>
-<td align="center">14.659193</td>
+<td align="center">0.9508</td>
+<td align="center">14.752290</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.9000</td>
-<td align="center">5.342455</td>
+<td align="center">0.8923</td>
+<td align="center">5.388795</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.8937</td>
-<td align="center">21.686289</td>
+<td align="center">0.8964</td>
+<td align="center">21.516890</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.8917</td>
-<td align="center">48.737972</td>
+<td align="center">0.8982</td>
+<td align="center">48.546876</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
-<td align="center">0.0103</td>
-<td align="center">1515256.704776</td>
+<td align="center">0.0119</td>
+<td align="center">1600008.531161</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
-<td align="center">0.0097</td>
-<td align="center">30746015.639807</td>
+<td align="center">0.0128</td>
+<td align="center">401746.826364</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
-<td align="center">0.0109</td>
-<td align="center">8128456.603943</td>
+<td align="center">0.0097</td>
+<td align="center">1163991413.294756</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.7701</td>
-<td align="center">1.613229</td>
+<td align="center">0.7646</td>
+<td align="center">1.646711</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.7705</td>
-<td align="center">6.583010</td>
+<td align="center">0.7650</td>
+<td align="center">6.590410</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.7676</td>
-<td align="center">14.695086</td>
+<td align="center">0.7619</td>
+<td align="center">14.876006</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.6199</td>
-<td align="center">3.276871</td>
+<td align="center">0.6226</td>
+<td align="center">3.272017</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.7628</td>
-<td align="center">6.522355</td>
+<td align="center">0.7697</td>
+<td align="center">6.467514</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.8276</td>
-<td align="center">9.816368</td>
+<td align="center">0.8283</td>
+<td align="center">9.846369</td>
 </tr>
 </tbody>
 </table>
@@ -1227,78 +1222,78 @@ Eksperyment z zadania 6 dla <span class="math inline">\(\small n = 100\)</span>
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9497</td>
-<td align="center">0.5850157</td>
+<td align="center">0.9537</td>
+<td align="center">0.5849882</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9510</td>
-<td align="center">2.3409960</td>
+<td align="center">0.9513</td>
+<td align="center">2.3395095</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9480</td>
-<td align="center">5.2726111</td>
+<td align="center">0.9506</td>
+<td align="center">5.2585185</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.8791</td>
-<td align="center">1.9230784</td>
+<td align="center">0.8815</td>
+<td align="center">1.9238592</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.8825</td>
-<td align="center">7.6767863</td>
+<td align="center">0.8752</td>
+<td align="center">7.7020199</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.8854</td>
-<td align="center">17.2380260</td>
+<td align="center">0.8856</td>
+<td align="center">17.2373643</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
 <td align="center">0.0000</td>
-<td align="center">891476.3939408</td>
+<td align="center">2159941.9104830</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
 <td align="center">0.0000</td>
-<td align="center">1105890.6424067</td>
+<td align="center">9489636.4354376</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
 <td align="center">0.0000</td>
-<td align="center">2116829.4837835</td>
+<td align="center">3482322.8393495</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.6929</td>
-<td align="center">0.5851764</td>
+<td align="center">0.6931</td>
+<td align="center">0.5852498</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.6973</td>
-<td align="center">2.3319471</td>
+<td align="center">0.6984</td>
+<td align="center">2.3345679</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.6822</td>
-<td align="center">5.2967457</td>
+<td align="center">0.6928</td>
+<td align="center">5.2716061</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.5705</td>
-<td align="center">1.1683005</td>
+<td align="center">0.5617</td>
+<td align="center">1.1700755</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.6983</td>
-<td align="center">2.3357594</td>
+<td align="center">0.6927</td>
+<td align="center">2.3346498</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.7624</td>
-<td align="center">3.5180337</td>
+<td align="center">0.7621</td>
+<td align="center">3.5028833</td>
 </tr>
 </tbody>
 </table>
@@ -1316,78 +1311,78 @@ Eksperyment z zadania 8 dla <span class="math inline">\(\small n = 20\)</span>
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9484</td>
-<td align="center">1.629218</td>
+<td align="center">0.9493</td>
+<td align="center">1.630397</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9434</td>
-<td align="center">6.563397</td>
+<td align="center">0.9493</td>
+<td align="center">6.507333</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9552</td>
-<td align="center">14.608315</td>
+<td align="center">0.9489</td>
+<td align="center">14.716924</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.8947</td>
-<td align="center">5.396462</td>
+<td align="center">0.8976</td>
+<td align="center">5.385703</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.8977</td>
-<td align="center">21.417549</td>
+<td align="center">0.8927</td>
+<td align="center">21.538001</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.8880</td>
-<td align="center">48.810098</td>
+<td align="center">0.8904</td>
+<td align="center">48.652965</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
 <td align="center">0.0107</td>
-<td align="center">289725.122652</td>
+<td align="center">100634.426781</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
-<td align="center">0.0118</td>
-<td align="center">7054902.216280</td>
+<td align="center">0.0120</td>
+<td align="center">2682495.417375</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
-<td align="center">0.0095</td>
-<td align="center">4263175.793769</td>
+<td align="center">0.0108</td>
+<td align="center">4672112.084921</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.7629</td>
-<td align="center">1.634940</td>
+<td align="center">0.7661</td>
+<td align="center">1.640510</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.7714</td>
-<td align="center">6.485508</td>
+<td align="center">0.7663</td>
+<td align="center">6.621272</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.7700</td>
-<td align="center">14.532977</td>
+<td align="center">0.7657</td>
+<td align="center">14.592972</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.6264</td>
-<td align="center">3.302388</td>
+<td align="center">0.6231</td>
+<td align="center">3.302569</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.7730</td>
-<td align="center">6.506686</td>
+<td align="center">0.7628</td>
+<td align="center">6.534581</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.8261</td>
-<td align="center">9.820378</td>
+<td align="center">0.8276</td>
+<td align="center">9.825798</td>
 </tr>
 </tbody>
 </table>
@@ -1405,147 +1400,137 @@ Eksperyment z zadania 8 dla <span class="math inline">\(\small n = 100\)</span>
 <tbody>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,1)\)</span></td>
-<td align="center">0.9494</td>
-<td align="center">0.5855972</td>
+<td align="center">0.9504</td>
+<td align="center">0.5829435</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(N(0,4)\)</span></td>
-<td align="center">0.9530</td>
-<td align="center">2.3355219</td>
+<td align="center">0.9475</td>
+<td align="center">2.3366837</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(N(0,9)\)</span></td>
-<td align="center">0.9476</td>
-<td align="center">5.2627483</td>
+<td align="center">0.9492</td>
+<td align="center">5.2597774</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,1)\)</span></td>
-<td align="center">0.8788</td>
-<td align="center">1.9186271</td>
+<td align="center">0.8811</td>
+<td align="center">1.9267331</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(L(0,2)\)</span></td>
-<td align="center">0.8890</td>
-<td align="center">7.6980516</td>
+<td align="center">0.8912</td>
+<td align="center">7.6967246</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(L(0,3)\)</span></td>
-<td align="center">0.8872</td>
-<td align="center">17.2671552</td>
+<td align="center">0.8801</td>
+<td align="center">17.3099906</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,1)\)</span></td>
 <td align="center">0.0000</td>
-<td align="center">3347268.9448131</td>
+<td align="center">1749529.8545800</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(C(0,2)\)</span></td>
 <td align="center">0.0000</td>
-<td align="center">13196687.6762370</td>
+<td align="center">3159817.3990618</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(C(0,3)\)</span></td>
 <td align="center">0.0000</td>
-<td align="center">3678740.4149617</td>
+<td align="center">2386541.8127775</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1)\)</span></td>
-<td align="center">0.6983</td>
-<td align="center">0.5842239</td>
+<td align="center">0.6962</td>
+<td align="center">0.5859124</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(exp(1/2)\)</span></td>
-<td align="center">0.6910</td>
-<td align="center">2.3477384</td>
+<td align="center">0.6916</td>
+<td align="center">2.3477723</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(exp(1/3)\)</span></td>
-<td align="center">0.6972</td>
-<td align="center">5.2792500</td>
+<td align="center">0.7014</td>
+<td align="center">5.2712736</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(1)\)</span></td>
-<td align="center">0.5717</td>
-<td align="center">1.1630414</td>
+<td align="center">0.5614</td>
+<td align="center">1.1634467</td>
 </tr>
 <tr class="even">
 <td align="left"><span class="math inline">\(\chi^2(2)\)</span></td>
-<td align="center">0.6930</td>
-<td align="center">2.3351553</td>
+<td align="center">0.6881</td>
+<td align="center">2.3413049</td>
 </tr>
 <tr class="odd">
 <td align="left"><span class="math inline">\(\chi^2(3)\)</span></td>
-<td align="center">0.7616</td>
-<td align="center">3.4997850</td>
+<td align="center">0.7526</td>
+<td align="center">3.4996480</td>
 </tr>
 </tbody>
 </table>
 <h4>
 Eksperyment z zadania 10 dla <span class="math inline">\(\small n = 20\)</span>
 </h4>
-<pre class="r"><code>ex10_data &lt;- freq_gen(real_means, norm_known_variance_int, trails_gen, sd, trial_size = 20)[1:9]
-proporiton_int &lt;- function(p, alpha = 0.05, n = 10000) {
-    z &lt;- qnorm(1 - alpha/2)
-    return(c(p - z * sqrt(p * (1 - p)/n), p + z * sqrt(p * (1 - p)/n)))
-}</code></pre>
 <h4>
 Podpunkt (a)
 </h4>
 <span class="math display">\[
-[0.9464568 \ , \ 0.9549432] \\
-[0.9453122 \ , \ 0.9538878] \\
-[0.9472896 \ , \ 0.9557104].
+[0.9495814 \ , \ 0.9578186] \\
+[0.9445841 \ , \ 0.9532159] \\
+[0.9473937 \ , \ 0.9558063].
 \]</span>
 <h4>
 Podpunkt (b)
 </h4>
 <span class="math display">\[
-[0.9456243 \ , \ 0.9541757] \\
-[0.9411547 \ , \ 0.9500453] \\
-[0.9460405 \ , \ 0.9545595].
+[0.9447921 \ , \ 0.9534079] \\
+[0.9439602 \ , \ 0.9526398] \\
+[0.9436484 \ , \ 0.9523516].
 \]</span>
 <h4>
 Podpunkt (c)
 </h4>
 <p><span class="math display">\[
-[0.2556573 \ , \ 0.2729427] \\
-[0.2584282 \ , \ 0.2757718] \\
-[0.2558553 \ , \ 0.2731447].
+[0.2498202 \ , \ 0.2669798] \\
+[0.2511061 \ , \ 0.2682939] \\
+[0.2551626 \ , \ 0.2724374].
 \]</span></p>
 <h4>
 Eksperyment z zadania 10 dla <span class="math inline">\(\small n = 100\)</span>
 </h4>
-<pre class="r"><code>ex10_data &lt;- freq_gen(real_means, norm_known_variance_int, trails_gen, sd, trial_size = 100)[1:9]
-proporiton_int &lt;- function(p, alpha = 0.05, n = 10000) {
-    z &lt;- qnorm(1 - alpha/2)
-    return(c(p - z * sqrt(p * (1 - p)/n), p + z * sqrt(p * (1 - p)/n)))
-}</code></pre>
 <h4>
 Podpunkt (a)
 </h4>
 <span class="math display">\[
-[0.9465609 \ , \ 0.9550391] \\
-[0.9467691 \ , \ 0.9552309] \\
-[0.9432326 \ , \ 0.9519674].
+[0.9456243 \ , \ 0.9541757] \\
+[0.9418818 \ , \ 0.9507182] \\
+[0.9470814 \ , \ 0.9555186].
 \]</span>
 <h4>
 Podpunkt (b)
 </h4>
 <span class="math display">\[
-[0.9446881 \ , \ 0.9533119] \\
-[0.9496857 \ , \ 0.9579143] \\
-[0.9452082 \ , \ 0.9537918].
+[0.9465609 \ , \ 0.9550391] \\
+[0.9439602 \ , \ 0.9526398] \\
+[0.9499984 \ , \ 0.9582016].
 \]</span>
 <h4>
 Podpunkt (c)
 </h4>
 <p><span class="math display">\[
-[0.1145103 \ , \ 0.1272897] \\
-[0.1166605 \ , \ 0.1295395] \\
-[0.1190069 \ , \ 0.1319931].
+[0.120376 \ , \ 0.133424] \\
+[0.1193003 \ , \ 0.1322997] \\
+[0.1101143 \ , \ 0.1226857].
 \]</span></p>
 <p>
-Podsumowując wszystkie powyższe wyniki można dojść do wniosku, że nasze testy nie są bardzo czułe na zmianę próby analizując prawdopodobieństwo pokrycia. Choć zachodzą nieznaczne poprawy przy wzroście próby dla wszystkich rozkładów przy estymowaniu średniej. W przypadku wariancji, tylko przy rozkładach normalnych można zauważyć poprawę, co nie jest zaskakujące, gdyż problem słabego pokrycia wariancji w pozostałych rozkładach, nie wynikał z rozmiaru próby. Warto też zwrócić uwagę, że wraz ze wzrostem próby przedziały ufności znacznie zmieniejszały swoje długości. W zadaniu 10 warto zwrócić uwagę, że rozmiar próby nie miał znaczenia, gdyż wszystkie wyniki są równie analogiczne dla próby 20, 50 jak i 100 elementowej. Nie powinno to zaskakiwać, skoro przedziały ufności dla proporcji były wykonywane z wykorzystaniem próby 10 000 elmentowej dla wszystkich powyższych przypadków.
+Podsumowując wszystkie powyższe wyniki, można dojść do wniosku, że nasze testy nie są bardzo czułe na zmianę próby, analizując prawdopodobieństwo pokrycia. Choć zachodzą nieznaczne poprawy przy wzroście próby dla wszystkich rozkładów przy estymowaniu średniej. W przypadku wariancji, tylko przy rozkładach normalnych można zauważyć poprawę, co nie jest zaskakujące, gdyż problem słabego pokrycia wariancji w pozostałych rozkładach nie wynikał z rozmiaru próby. Warto też zwrócić uwagę na to, że wraz ze wzrostem próby przedziały ufności znacznie zmniejszały swoje długości. W zadaniu 10 warto zwrócić uwagę na to, że rozmiar próby nie miał znaczenia, gdyż wszystkie wyniki są równie analogiczne dla próby 20, 50 jak i 100 elementowej. Nie powinno to zaskakiwać, skoro przedziały ufności dla proporcji były wykonywane z wykorzystaniem próby 10 000 elmentowej dla wszystkich powyższych przypadków.
 </p>
 
 

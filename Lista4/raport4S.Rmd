@@ -1,0 +1,404 @@
+---
+title: "Raport 4"
+author: "Piotr Wójcik"
+date: "16 12 2021"
+output: html_document
+---
+<font size = "3">
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(scipen=999)
+```
+
+```{r gen_functions, echo = FALSE, tidy = TRUE, warning = FALSE}
+
+real_means_1 <- rep(0, times = 12)
+real_means_2 <- rep(c(0,1), times = 6)
+sd_1 <- c(1,1,1,1,pi/sqrt(3),pi/sqrt(3),pi/sqrt(3),pi/sqrt(3),1,1,1,1)
+sd_2 <- c(1,1,2,2,pi/sqrt(3),pi/sqrt(3),pi/sqrt(3)*2,pi/sqrt(3)*2,1,1,2,2)
+
+trials_gen_1 <- function(n) {
+  trials <- list()
+  trials[[1]] <- rnorm(n)
+  trials[[2]] <- rnorm(n)
+  trials[[3]] <- rnorm(n)
+  trials[[4]] <- rnorm(n)
+  trials[[5]] <- rlogis(n, 0, 1)
+  trials[[6]] <- rlogis(n, 0, 1)
+  trials[[7]] <- rlogis(n, 0, 1)
+  trials[[8]] <- rlogis(n, 0, 1)
+  trials[[9]] <- rcauchy(n, 0, 1)
+  trials[[10]] <- rcauchy(n, 0, 1)
+  trials[[11]] <- rcauchy(n, 0, 1)
+  trials[[12]] <- rcauchy(n, 0, 1)
+  return(trials)
+}
+
+trials_gen_2 <- function(n) {
+  trials <- list()
+  trials[[1]] <- rnorm(n)
+  trials[[2]] <- rnorm(n, 1, 1)
+  trials[[3]] <- rnorm(n, 0, 2)
+  trials[[4]] <- rnorm(n, 1, 2)
+  trials[[5]] <- rlogis(n, 0, 1)
+  trials[[6]] <- rlogis(n, 1, 1)
+  trials[[7]] <- rlogis(n, 0, 2)
+  trials[[8]] <- rlogis(n, 1, 2)
+  trials[[9]] <- rcauchy(n, 0, 1)
+  trials[[10]] <- rcauchy(n, 1, 1)
+  trials[[11]] <- rcauchy(n, 0, 2)
+  trials[[12]] <- rcauchy(n, 1, 2)
+  return(trials)
+}
+
+freq_gen <- function(real_means_1, real_means_2, interval_gen, trials_gen_1, trials_gen_2, sd_1, sd_2, trial_size = 50, conf_int = 0.05, n = 10000, parameter = "mean") {
+  T <- list()
+  L <- list()
+  T[1:length(real_means_1)] <- 0
+  L[1:length(real_means_1)] <- c(0)
+  for(i in 1:n) {
+    trials_1 <- trials_gen_1(trial_size)
+    trials_2 <- trials_gen_2(trial_size)
+    for(k in 1:length(trials_1)) {
+      interval <- interval_gen(trials_1[[k]], trials_2[[k]], sd_1[k], sd_2[k], real_means_1[k], real_means_2[k],  conf_int)
+      L[[k]] <- c(L[[k]], interval[2] - interval[1])
+     if(parameter == "mean") { 
+        real_parameter <- real_means_1[k] - real_means_2[k]
+      } else { 
+        real_parameter <- (sd_2[k]/sd_1[k])^2 
+        } 
+      if(interval[1] <= real_parameter && interval[2] >= real_parameter) T[[k]] <- T[[k]] + 1
+    }
+  }
+  return(lapply(1:length(T), function(x) c(T[[x]]/n, mean(L[[x]][2:n+1]))))
+}
+
+ex2_int <- function(trials_1, trials_2, sd_1, sd_2, real_means_1, real_means_2,  conf_int) {
+  z <- qnorm(1 - conf_int/2)
+  sd <- sqrt(sd_1^2/length(trials_1) + sd_2^2/length(trials_2))
+  L <- (mean(trials_1) - mean(trials_2)) - z*sd
+  P <- (mean(trials_1) - mean(trials_2)) + z*sd
+  return(c(L,P))
+}
+```
+
+<h2>Zadanie 1</h2>
+<p>Weźmy próbę $\small X_1 , \ldots , X_{n_1}$ z rozkładu $\small N(\mu_1 , \sigma_1)$ oraz niezależną od niej próbę $\small Y_1 , \ldots , Y_{n_2}$ z rozkładu $\small N(\mu_2 , \sigma_2)$, przy czym znamy odchylenie standardowe w obydwu rozkładach. Chcemy skonstruować przedział ufności dla różnicy średnich $\small \mu_1 - \mu_2$ na poziomie ufności $\small 1 - \alpha$.</p>
+<p>Zaczniemy od wzięcia próbkowej średniej dla obu prób:</p>
+$$
+\overline{X} = \frac{1}{n_1}\sum_{i = 1}^{n_1}{X_i} \hspace{2cm} \overline{Y} = \frac{1}{n_2}\sum_{i = 1}^{n_2}{Y_i}.
+$$
+<p>Z własności rozkładu normalnego dostajemy, że:</p>
+$$
+\overline{X} - \overline{Y} \sim N\left(\mu_1 - \mu_2, \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\right).
+$$
+<p>Stąd, korzystając z zadania pierwszego z poprzedniego raportu już łatwo dostajemy przedział ufości na poziomie ufności $\small 1 - \alpha$ postaci</p>
+$$
+\left[ (\overline{X} - \overline{Y}) - z_{1 - \alpha/2}\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} \ \ , \ \ (\overline{X} - \overline{Y}) + z_{1 - \alpha/2}\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} \right].
+$$
+<p>Gdzie $\small z_{1 - \alpha/2}$ to kwantyl rzędu $\small 1 - \alpha/2$ z rozkładu standardowego normalnego.</p>
+
+<h2>Zadanie 2</h2>
+<p>W poniższym zadaniu wygenerujemy $\small n_1 = 50$ i $\small n_2 = 50$ obserwacji z rozkładu:</p>
+<ol type = "a">
+<li>normalnego z parametrami $\small \mu_1$ i $\small \mu_2$ oraz $\small \sigma_1$ i $\small \sigma_2$:</li>
+<ol type = "i">
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 0, \sigma_2 = 1$</li>
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 1, \sigma_2 = 1$</li>
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 0, \sigma_2 = 2$</li>
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 1, \sigma_2 = 2$</li>
+</ol>
+<li>logistycznego z parametrami $\small \mu_1$ i $\small \mu_2$ oraz $\small \sigma_1$ i $\small \sigma_2$:</li>
+<ol type = "i">
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 0, \sigma_2 = 1$</li>
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 1, \sigma_2 = 1$</li>
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 0, \sigma_2 = 2$</li>
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 1, \sigma_2 = 2$</li>
+</ol>
+<li>Cauchy'ego z parametrami $\small \mu_1$ i $\small \mu_2$ oraz $\small \sigma_1$ i $\small \sigma_2$:</li>
+<ol type = "i">
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 0, \sigma_2 = 1$</li>
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 1, \sigma_2 = 1$</li>
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 0, \sigma_2 = 2$</li>
+<li>$\small \mu_1 = 0, \sigma_1 = 1$; $\small \mu_2 = 1, \sigma_2 = 2$</li>
+</ol>
+</ol>
+<p>Na ich podstawie wyznaczymy przedział ufności dla parametru $\small \mu_1 - \mu_2$ z zadania 1 na poziomie ufności $\small 1 - \alpha = 0.95$ oraz jego długość. Zrobimy to 10 000 razy w celu oszacowania prawdopodobieństwa pokrycia nieznanego parametru przez przedział ufności oraz jego długość. Wyniki zaprezentujemy w poniższej tabeli:</p>
+```{r ex2table, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex2_data <- freq_gen(real_means_1, real_means_2, ex2_int, trials_gen_1, trials_gen_2, sd_1, sd_2)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex2_data), function(x) ex2_data[[x]][1])
+column2 <- sapply(1:length(ex2_data), function(x) ex2_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<p>Zważając na dobrany poziom istotności równy 95%, wyniki jakie uzyskaliśmy nie zaskakują. Jedyny rozkład który znacznie odbiega od teoretycznej wartości jest rozkład <em>Cauchy'ego</em>.Spowodowane jest to tym, że w odróżnieniu od pozostałych rozkładów, ten nie zbiega do standardowego normalnego z <em>Centralnego Twierdzenia Granicznego</em>. We wszystkich przypadkach możemy zaobserwować, że długości przedziałów rosną wraz ze wzrostem parametrów $\small \sigma_1$ i $\small \sigma_2$, co nie powinno zaskakiwać, skoro wraz ze wzrostem tego parametru, wzrasta rozrzut danych w rozkładzie normalnym.</p>
+
+<h2>Zadanie 3</h2>
+<p>W poniższym zadaniu znowu będziemy szukać przedziału ufności dla różnicy średnich $\small \mu_1 - \mu_2$ tyle, że tym razem przy nieznanych, równych wariancjach.</p>
+<p>Korzystając z faktu, że mamy do czynienia z równymi wariancjami, to możemy przybliżyć wariancję zmiennej $\small \overline{X} - \overline{Y}$ jako:</p>
+$$
+S_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}.
+$$
+<p>Gdzie $\small s_1^2$ i $\small s_2^2$, to próbkowe wariancje dla poszczególnych prób.</p>
+<p>Możemy więc wziąć zmienną o rozkładzie studenta z $\small n_1 + n_2 - 2$ stopniami swobody postaci:</p>
+$$
+T = \frac{(\overline{X} - \overline{Y}) - (\mu_1 - \mu_2)}{S_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}.
+$$
+<p>Stąd już dostajemy przedział ufności na poziomie istotności $\small 1 - \alpha$ postaci:</p>
+$$
+\left[ (\overline{X} - \overline{Y}) - t_{1 - \alpha/2}S_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \ \ , \ \ (\overline{X} - \overline{Y}) + t_{1 - \alpha/2}S_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}\right].
+$$
+<p>Gdzie $\small t_{1 - \alpha/2}$ to kwantyl rzędu $\small 1 - \alpha/2$ z rozkładu studenta o $\small n_1 + n_2 - 2$ stopniach swobody.</p>
+
+<h2>Zadanie 4</h2>
+<p>W poniższym zadaniu powtórzymy eksperyment z zadania 2, ale wykorzystując przedział ufności na poziomie istotności równym $\small 1 - \alpha = 0.95$ ustalony w zadaniu 3. Wyniki zaprezentujemy w poniższej tabelce:</p>
+```{r ex4table, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex4_int <- function(trials_1, trials_2, sd_1, sd_2, real_means_1, real_means_2,  conf_int) {
+  t <- qt(1-conf_int/2, length(trials_1) + length(trials_2) - 2)
+  s <- sqrt(((length(trials_1) - 1)*sd_1^2 + (length(trials_2) - 1)*sd_2^2)/(length(trials_1) + length(trials_2) - 2))
+  L <- mean(trials_1) - mean(trials_2) - t*s*sqrt(1/length(trials_1) + 1/length(trials_2))
+  R <- mean(trials_1) - mean(trials_2) + t*s*sqrt(1/length(trials_1) + 1/length(trials_2))
+  return(c(L,R))
+}
+
+ex4_data <- freq_gen(real_means_1, real_means_2, ex4_int, trials_gen_1, trials_gen_2, sd_1, sd_2)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex4_data), function(x) ex4_data[[x]][1])
+column2 <- sapply(1:length(ex4_data), function(x) ex4_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<p>Wyniki nie różnią się zacznie z wynikami uzskanymi w zadaniu drugim. Warto zwrócić uwagę, że przy rozkładzie Cauchy'ego nadal uzyskujemy bezsensowne wyniki.</p>
+
+<h2>Zadanie 5</h2>
+<p>Zajmiemy się ponownie ustaleniem przedziału ufności na poziomie istotności $\small 1 - \alpha$ dla różnicy średnich $\small \mu_1 - \mu_2$, ale bez założenia równości wariancji.</p>
+<p>Możemy zajmować się znowu tą samą statystyką co w poprzednim zadaniu, to znaczy:</p>
+$$
+T = \frac{(\overline{X} - \overline{Y}) - (\mu_1 - \mu_2)}{S_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}.
+$$
+<p>Aczkolwiek nie jest to rozkład studenta z $\small n_1 + n_2 - 2$ stopniami swobody. Jest to nadal rozkład studenta, aczkolwiek nie jesteśmy w stanie dokładnie wyznaczyć ile stopni swobody ma nasz rozkład, ale możemy skorzystać z równania <em>Welcha-Satterthwaite'a</em>, które daje nam przybliżoną ich wartość:</p>
+$$
+\nu \approx \frac{\left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{s_1^4}{n_1^2(n_1 - 1)} + \frac{s_2^4}{n_2^2(n_2 - 1)}}.
+$$
+<p>Ostatecznie nasz przedział ufności jest postaci:</p>
+$$
+\left[ (\overline{X} - \overline{Y}) - t_{1 - \alpha/2}S_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \ \ , \ \ (\overline{X} - \overline{Y}) + t_{1 - \alpha/2}S_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}\right].
+$$
+<p>Gdzie $\small t_{1 - \alpha/2}$ to kwantyl rzędu $\small 1 - \alpha/2$ z rozkładu studenta o $\small \nu$ stopniach swobody.</p>
+
+<h2>Zadanie 6</h2>
+<p>W poniższym zadaniu powtórzymy eksperyment z zadania 2, ale wykorzystując przedział ufności na poziomie istotności równym $\small 1 - \alpha = 0.95$ ustalony w zadaniu 5. Wyniki zaprezentujemy w poniższej tabelce:</p>
+```{r ex6table, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex6_int <- function(trials_1, trials_2, sd_1, sd_2, real_means_1, real_means_2,  conf_int) {
+  n1 <- length(trials_1)
+  n2 <- length(trials_2)
+  df <- (sd_1^2/n1 + sd_2^2/n2)^2/(sd_1^4/(n1^2*(n1 - 1)) + sd_2^4/(n2^2*(n2 - 1)))
+  t <- qt(1-conf_int/2, df)
+  s <- sqrt(((n1 - 1)*sd_1^2 + (n2 - 1)*sd_2^2)/(n1 + n2 - 2))
+  L <- mean(trials_1) - mean(trials_2) - t*s*sqrt(1/length(trials_1) + 1/length(trials_2))
+  R <- mean(trials_1) - mean(trials_2) + t*s*sqrt(1/length(trials_1) + 1/length(trials_2))
+  return(c(L,R))
+}
+
+ex6_data <- freq_gen(real_means_1, real_means_2, ex6_int, trials_gen_1, trials_gen_2, sd_1, sd_2)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex6_data), function(x) ex6_data[[x]][1])
+column2 <- sapply(1:length(ex6_data), function(x) ex6_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<p>Wyniki jakie uzyskaliśmy są bardzo zbliżone do tych jakie uzyskaliśmy w zadaniu 4. W szczególności w przypadkach kiedy odchylenie standardowe było równe, czego powinniśmy się spodziewać. Gdyż model ten powinien zbliżać się do tego z zadania 3, kiedy wariancje w obu modelach rzeczywiście są równe. Rozkład Cauchy'ego nadal daje bezużyteczne wyniki co jest oczekiwane.</p>
+
+<h2>Zadanie 7</h2>
+<p>Teraz zajmiemy się konstrukcją przedziału ufności na poziomie istotności $\small 1 - \alpha$ dla ilorazu wariancji postaci $\small \frac{\sigma_2^2}{\sigma_1^2}$ w modelu normalnym, gdzie zakładamy, że znamy średnie z obu rozkładów $\small \mu_1$ i $\small \mu_2$.</p>
+<p>Estymatorem dla $\small \frac{\sigma_2^2}{\sigma_1^2}$ jest $\small \frac{\hat{\sigma}_2^2}{\hat{\sigma}_1^2}$. Gdzie:</p>
+$$
+\hat{\sigma}_1^2 = \frac{1}{n_1}\sum_{i = 1}^{n_1}{(X_i - \mu_1)^2} \hspace{2cm} \hat{\sigma}_2^2 = \frac{1}{n_2}\sum_{i = 1}^{n_2}{(Y_i - \mu_2)^2}.
+$$
+<p>Zmienna:</p>
+
+$$
+F = \frac{\hat{\sigma}_1^2/\sigma_1^2}{\hat{\sigma}_2^2/\sigma_2^2},
+$$
+</p>ma rozkład Fishera-Snedecora z $\small n_1$ i $\small n_2$ stopniami swobody. Stąd już możemy łatwo wyznaczyć przedział ufności na poziomie istotności $\small 1 - \alpha$ dla ilorazu wariancji $\small \frac{\sigma_2^2}{\sigma_1^2}$ postaci:</p>
+$$
+\left[ F_{\alpha/2} \frac{\hat{\sigma}_2^2}{\hat{\sigma}_1^2} \ \ , \ \ F_{1-\alpha/2} \frac{\hat{\sigma}_2^2}{\hat{\sigma}_1^2} \right].
+$$
+<p>Gdzie $\small F_{\alpha/2}$ to kwantyl rzędu $\small \alpha/2$ z rozkładu Fishera-Snedecora z $\small n_1$ i $\small n_2$ stopniami swobody oraz $\small F_{1-\alpha/2}$ to kwantyl rzędu $\small 1 -\alpha/2$ z rozkładu Fishera-Snedecora z $\small n_1$ i $\small n_2$ stopniami swobody.</p>
+
+<h2>Zadanie 8</h2>
+<p>W poniższym zadaniu powtórzymy eksperyment z zadania 2, ale będziemy konstruować przedziały ufności dla ilorazu wariancji $\small \frac{\sigma_2^2}{\sigma_1^2}$ wyprowadzone w poprzednim zadaniu a nie dla średniej. Wyniki zaprezentujemy w poniższej tabelce:</p>
+```{r ex8table, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex8_int <- function(trials_1, trials_2, sd_1, sd_2, real_means_1, real_means_2,  conf_int) {
+  n1 <- length(trials_1)
+  n2 <- length(trials_2)
+  s1 <- 1/n1*sum((trials_1 - real_means_1)^2)
+  s2 <- 1/n2*sum((trials_2 - real_means_2)^2)
+  L <- qf(conf_int/2, n1, n2)*s2/s1
+  R <- qf(1 - conf_int/2, n1, n2)*s2/s1
+  return(c(L,R))
+}
+
+ex8_data <- freq_gen(real_means_1, real_means_2, ex8_int, trials_gen_1, trials_gen_2, sd_1, sd_2, parameter = "variance")
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex8_data), function(x) ex8_data[[x]][1])
+column2 <- sapply(1:length(ex8_data), function(x) ex8_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<p>Analizując wyniki możemy zauważyć, że w tym przypadku jedyne wyniki jakie są poprawne to te dla rozkładów normalnych, choć wyniki dla rozkładu logistycznego też nie są najgorsze. Warto zwrócić uwagę na znaczny wzrost szerokości przedziałów ufności wraz ze wzrostem wariancji dla rozkładów normalnych jak i logistycznych. Jak w każdym poprzedni przypadku uzyskujemy bezsensowne wyniki dla rozkładów Cauchy'ego.</p>
+
+<h2>Zadanie 9</h2>
+<p>W poniższym zadaniu wyprowadzimy przedział ufności dla ilorazu wariancji $\small \frac{\sigma_2^2}{\sigma_1^2}$, ale tym razem bez zakładania znajomości średnich $\small \mu_1$ i $\small \mu_2$.</p>
+<p>Korzystać będziemy w takim razie z próbkowych wariancji $\small s_1^2$ i $\small s_2^2$ do estymacji wariancji $\small \sigma_1^2$ i $\small \sigma_2^2$. Możemy skorzystać z tego samego rozkładu co w poprzednim zadaniu, ale zamiast $\small \hat{\sigma}_1^2$ i $\small \hat{\sigma}_2^2$ wykorzystamy $\small s_1^2$ i $\small s_2^2$. Uzyskamy więc zmienną postaci:</p>
+$$
+F = \frac{s_1^2/\sigma_1^2}{s_2^2/\sigma_2^2},
+$$
+<p>mającą rozkład Fishera-Snedecora z $\small n_1 - 1$ i $\small n_2 - 1$ stopniami swobody. Bez problemu wyznaczymy stąd przedział ufności na poziomie istotności $\small 1 - \alpha$ dla ilorazu wariancji $\small \frac{\sigma_2^2}{\sigma_1^2}$ postaci:</p>
+$$
+\left[ F_{\alpha/2} \frac{s_2^2}{s_1^2} \ \ , \ \ F_{1-\alpha/2} \frac{s_2^2}{s_1^2} \right].
+$$
+<p>Gdzie $\small F_{\alpha/2}$ to kwantyl rzędu $\small \alpha/2$ z rozkładu Fishera-Snedecora z $\small n_1 - 1$ i $\small n_2 - 1$ stopniami swobody oraz $\small F_{1-\alpha/2}$ to kwantyl rzędu $\small 1 -\alpha/2$ z rozkładu Fishera-Snedecora z $\small n_1 - 1$ i $\small n_2 - 1$ stopniami swobody.</p>
+
+<h2>Zadanie 10</h2>
+<p>W poniższym zadaniu skonstruujemy przedziały ufności analogiczne do tych z zadania 8, ale korzystając z konstrukcji z poprzedniego zadania, kiedy nie znamy średnich $\small \mu_1$ i $\small \mu_2$. Dane zaprezentujemy w poniższej tabelce:</p>
+```{r ex10table, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex10_int <- function(trials_1, trials_2, sd_1, sd_2, real_means_1, real_means_2,  conf_int) {
+  n1 <- length(trials_1)
+  n2 <- length(trials_2)
+  s1 <- var(trials_1)
+  s2 <- var(trials_2)
+  L <- qf(conf_int/2, n1 - 1, n2 - 1)*s2/s1
+  R <- qf(1 - conf_int/2, n1 - 1, n2 - 1)*s2/s1
+  return(c(L,R))
+}
+
+ex10_data <- freq_gen(real_means_1, real_means_2, ex10_int, trials_gen_1, trials_gen_2, sd_1, sd_2, parameter = "variance")
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex10_data), function(x) ex10_data[[x]][1])
+column2 <- sapply(1:length(ex10_data), function(x) ex10_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<p>Wyniki jakie uzyskaliśmy są bardzo zbliżone do tych jakie uzyskaliśmy w zadaniu 8. Zachodzi tylko nieznaczny wzrost szerokości przedziałów ufności dla wszystkich przykładów, który i tak jest zaniedbywalny.</p>
+
+<h2>Zadanie 11</h2>
+<p>W poniższym zadaniu powtórzymy eksperymenty numeryczne z zadań 2, 4, 6, 8 i 10, ale dla prób o rozmiarze $\small n_1 = n_2 = 20$ i $\small n_1 = n_2 = 100$, w celu przeanalizowania jak zmiana rozmiaru próby wpływa na nasze wyniki.</p>
+
+<h4>Eksperyment z zadania 2 dla $\small n_1 = n_2 = 20$</h4>
+```{r ex2table20, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex2_data <- freq_gen(real_means_1, real_means_2, ex2_int, trials_gen_1, trials_gen_2, sd_1, sd_2, trial_size = 20)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex2_data), function(x) ex2_data[[x]][1])
+column2 <- sapply(1:length(ex2_data), function(x) ex2_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<h4>Eksperyment z zadania 2 dla $\small n_1 = n_2 = 100$</h4>
+```{r ex2table100, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex2_data <- freq_gen(real_means_1, real_means_2, ex2_int, trials_gen_1, trials_gen_2, sd_1, sd_2, trial_size = 100)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex2_data), function(x) ex2_data[[x]][1])
+column2 <- sapply(1:length(ex2_data), function(x) ex2_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+
+<h4>Eksperyment z zadania 4 dla $\small n_1 = n_2 = 20$</h4>
+```{r ex4table20, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex4_data <- freq_gen(real_means_1, real_means_2, ex4_int, trials_gen_1, trials_gen_2, sd_1, sd_2, trial_size = 20)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex4_data), function(x) ex4_data[[x]][1])
+column2 <- sapply(1:length(ex4_data), function(x) ex4_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<h4>Eksperyment z zadania 4 dla $\small n_1 = n_2 = 100$</h4>
+```{r ex4table100, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex4_data <- freq_gen(real_means_1, real_means_2, ex4_int, trials_gen_1, trials_gen_2, sd_1, sd_2, trial_size = 100)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex4_data), function(x) ex4_data[[x]][1])
+column2 <- sapply(1:length(ex4_data), function(x) ex4_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<h4>Eksperyment z zadania 6 dla $\small n_1 = n_2 = 20$</h4>
+```{r ex6table20, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex6_data <- freq_gen(real_means_1, real_means_2, ex6_int, trials_gen_1, trials_gen_2, sd_1, sd_2, trial_size = 20)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex6_data), function(x) ex6_data[[x]][1])
+column2 <- sapply(1:length(ex6_data), function(x) ex6_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<h4>Eksperyment z zadania 6 dla $\small n_1 = n_2 = 100$</h4>
+```{r ex6table100, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex6_data <- freq_gen(real_means_1, real_means_2, ex6_int, trials_gen_1, trials_gen_2, sd_1, sd_2, trial_size = 100)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex6_data), function(x) ex6_data[[x]][1])
+column2 <- sapply(1:length(ex6_data), function(x) ex6_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<h4>Eksperyment z zadania 8 dla $\small n_1 = n_2 = 20$</h4>
+```{r ex8table20, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex8_data <- freq_gen(real_means_1, real_means_2, ex8_int, trials_gen_1, trials_gen_2, sd_1, sd_2, parameter = "variance", trial_size = 20)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex8_data), function(x) ex8_data[[x]][1])
+column2 <- sapply(1:length(ex8_data), function(x) ex8_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<h4>Eksperyment z zadania 8 dla $\small n_1 = n_2 = 100$</h4>
+```{r ex8table100, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex8_data <- freq_gen(real_means_1, real_means_2, ex8_int, trials_gen_1, trials_gen_2, sd_1, sd_2, parameter = "variance", trial_size = 100)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex8_data), function(x) ex8_data[[x]][1])
+column2 <- sapply(1:length(ex8_data), function(x) ex8_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<h4>Eksperyment z zadania 10 dla $\small n_1 = n_2 = 20$</h4>
+```{r ex10table20, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex10_data <- freq_gen(real_means_1, real_means_2, ex10_int, trials_gen_1, trials_gen_2, sd_1, sd_2, parameter = "variance", trial_size = 20)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex10_data), function(x) ex10_data[[x]][1])
+column2 <- sapply(1:length(ex10_data), function(x) ex10_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<h4>Eksperyment z zadania 10 dla $\small n_1 = n_2 = 100$</h4>
+```{r ex10table100, echo = FALSE, tidy = TRUE, warning = FALSE}
+ex10_data <- freq_gen(real_means_1, real_means_2, ex10_int, trials_gen_1, trials_gen_2, sd_1, sd_2, parameter = "variance", trial_size = 100)
+rows = c("$N(0,1)/N(0,1)$", "$N(0,1)/N(1,1)$", "$N(0,1)/N(0,4)$", "$N(0,1)/N(1,4)$", "$L(0,1)/L(0,1)$", "$L(0,1)/L(1,1)$", "$L(0,1)/L(0,2)$", "$L(0,1)/L(1,2)$", "$C(0,1)/C(0,1)$", "$C(0,1)/C(1,1)$", "$C(0,1)/C(0,2)$", "$C(0,1)/C(1,2)$")
+column1 <- sapply(1:length(ex10_data), function(x) ex10_data[[x]][1])
+column2 <- sapply(1:length(ex10_data), function(x) ex10_data[[x]][2])
+table <- data.frame(column1, column2)
+row.names(table) <- rows
+knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "c", col.names = c("prawdopodobieństwo pokrycia", "średnia długość przedziałów ufności"))
+```
+<p>Podsumowując wszystkie uzyskane wyniki można dojść do wniosku, że rozmiar próby widocznie wpływa na nasze przedziały ufności. Najlepiej to oczywiście widać przy rozkładzie normalnym, dla którego są wyprowadzone wszystkie przedziały ufności z których tu korzystaliśmy. Mniejsza próba skutkowała znacznie dłuższymi przedziałami ufności, oraz gorszymi prawdopodobieństwami pokrycia. Natomiast większa próba przeciwnie. Choć takie wyniki uzyskaliśmy jedynie dla rozkładów normalnych. W przypadku rozkładów logistycznych widać czasem pogorszenie prawdopodobieństw pokryć wraz ze wzrostem próby, choć długości uzyskanych przedziałów ufności są krótsze dla większych prób. Jak mogliśmy się spodziewać, rozmiar próby nie miał żadnego wpływu w przypadku rozkładów Cauchy'ego, co jest spowodowane brakiem pierwszego jak i drugiego momentu. Ostatecznie można stwierdzić, że dla przypadku rozkładu normalnego warto dobierać większą próbę w celu uzyskania lepszych wyników. Dla pozostałych dwóch przypadków, nie ma to takiego znaczenia.</p>
+
+<h2>Zadanie 12</h2>
+</font>
+
+
+
+
+
+

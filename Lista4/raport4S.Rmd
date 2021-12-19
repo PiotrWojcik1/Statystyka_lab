@@ -395,6 +395,36 @@ knitr::kable(table, row.names = TRUE, escape = FALSE, format = "pipe", align = "
 <p>Podsumowując wszystkie uzyskane wyniki można dojść do wniosku, że rozmiar próby widocznie wpływa na nasze przedziały ufności. Najlepiej to oczywiście widać przy rozkładzie normalnym, dla którego są wyprowadzone wszystkie przedziały ufności z których tu korzystaliśmy. Mniejsza próba skutkowała znacznie dłuższymi przedziałami ufności, oraz gorszymi prawdopodobieństwami pokrycia. Natomiast większa próba przeciwnie. Choć takie wyniki uzyskaliśmy jedynie dla rozkładów normalnych. W przypadku rozkładów logistycznych widać czasem pogorszenie prawdopodobieństw pokryć wraz ze wzrostem próby, choć długości uzyskanych przedziałów ufności są krótsze dla większych prób. Jak mogliśmy się spodziewać, rozmiar próby nie miał żadnego wpływu w przypadku rozkładów Cauchy'ego, co jest spowodowane brakiem pierwszego jak i drugiego momentu. Ostatecznie można stwierdzić, że dla przypadku rozkładu normalnego warto dobierać większą próbę w celu uzyskania lepszych wyników. Dla pozostałych dwóch przypadków, nie ma to takiego znaczenia.</p>
 
 <h2>Zadanie 12</h2>
+<p><em>Metoda Delta</em> to procedura wyznaczania przybliżonej wariancji dla zmiennej losowej postaci $\small g(X)$. Podstawą do naszego rozumowania będzie poniższe twierdzenie:</p>
+<p>Załóżmy, że $\small \{ X_n \}$ jest ciągiem zmiennych losowych takich, że:</p>
+$$
+\sqrt{n}\left( X_n - \theta \right) \xrightarrow{\text{D}} N(0, \sigma^2).
+$$
+<p>Załóżmy, że funkcja $\small g$ jest różniczkowalna w punkcie $\small \theta$ oraz $\small g'(\theta) \neq 0$. Wtedy:</p>
+$$
+\sqrt{n}\left( g(X_n) - g(\theta) \right) \xrightarrow{\text{D}} N\left(0, \sigma^2(g'(\theta))^2\right).
+$$
+<p>Z powyższego twierdzenia bezpośrednio wynika, że asymptotyczna wariancja $\small g(X_n)$ wynosi</p>
+$$
+\frac{\sigma^2(g'(\theta))^2}{n}.
+$$
+<p>Przypomnijmy, że dla prostej próby $\small X_1 , \ldots , X_n$ z rozkładu $\small f(x; \theta_0)$ oraz skończonej informacji Fishera $\small I(\theta_0)$, zgodny ciąg rozwiązań $\small \{ \hat{\theta_n} \}$ równania funkcji największej wiarygodności spełnia:</p>
+$$
+\sqrt{n}\left( \hat{\theta_n} - \theta_0 \right) \xrightarrow{\text{D}} N\left(0, \frac{1}{I(\theta_0)}\right).
+$$
+<p>Podstawiając więc za informajce Fishera $\small I(\theta_0)$ jej wyestymowaną postać $\small \hat{I(\theta_n)}$, możemy z łatwością skonstruować asymptotyczny przedział ufności na poziomie istotności $\small 1 - \alpha$ dla parametru $\small \theta_0$ postaci:</p>
+$$
+\left( \hat{\theta_n} - z_{1-\alpha/2} \frac{1}{\sqrt{n I(\hat{\theta_n})}} \ , \ \hat{\theta_n} + z_{1-\alpha/2} \frac{1}{\sqrt{n I(\hat{\theta_n})}}\right).
+$$
+<p>Korzystając z metody delta możemy rozszerzyć przedziały ufności na funkcje parametru $\small \theta$. Mianowicie, jeżeli spełnione są wszystkie założenia twierdzenia, to zachodzi poniższa zbieżność:</p>
+$$
+\sqrt{n}\left( g(\hat{\theta_n}) - g(\theta_0) \right) \xrightarrow{\text{D}} N\left(0, \frac{g'(\theta_0)^2}{I(\theta_0)}\right).
+$$
+<p>Z niej już łatwo wyprowadzamy postać asymptotycznego przedziału ufności na poziomie istotności $\small 1 - \alpha$ dla parametru $\small g(\theta_0)$ postaci:</p>
+$$
+\left( g(\hat{\theta_n}) - z_{1-\alpha/2} \frac{g'(\hat{\theta_n})}{\sqrt{n I(\hat{\theta_n})}} \ , \ g(\hat{\theta_n}) + z_{1-\alpha/2} \frac{g'(\hat{\theta_n})}{\sqrt{n I(\hat{\theta_n})}}\right).
+$$
+
 </font>
 
 
